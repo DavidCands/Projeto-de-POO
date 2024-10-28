@@ -3,14 +3,14 @@ package unicap.sistemasdegerenciamento.Eventos;
 import java.util.ArrayList;
 import java.util.List;
 
-class Evento {
+public class Evento {
     private String nome;
     private String data;
     private Local local;
     private int vagasDisponiveis;
     private List<Participante> participantes;
 
-    public Evento(String nome, String data, Local local /*int vagasDisponiveis*/) {
+    public Evento(String nome, String data, Local local, int vagasDisponiveis) {
         this.nome = nome;
         this.data = data;
         this.local = local;
@@ -72,5 +72,9 @@ class Evento {
 
     public Local getLocal() {
         return local;
+    }
+
+    public List<Participante> getParticipantes() { 
+        return participantes;
     }
 }
