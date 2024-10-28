@@ -1,26 +1,26 @@
 package unicap.sistemasdegerenciamento.Eventos;
- 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
- 
+
 public class SistemaGerenciamentoEventos {
- 
+
     public static void main(String[] args) {
-Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         List<Evento> eventos = new ArrayList<>();
- 
+
         int opcao;
         do {
             System.out.println("\n--- Sistema de Gerenciamento de Eventos ---");
             System.out.println("1. Cadastrar novo evento");
             System.out.println("2. Listar eventos");
             System.out.println("3. Gerenciar um evento");
-            System.out.println("0. Voltar ao menu principal");
+            System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();  
- 
+
             switch (opcao) {
                 case 1:
                     cadastrarEvento(scanner, eventos);
@@ -32,7 +32,7 @@ Scanner scanner = new Scanner(System.in);
                     gerenciarEvento(scanner, eventos);
                     break;
                 case 0:
-                    System.out.println("Voltando ao menu principal...");
+                    System.out.println("Saindo do sistema...");
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente.");
@@ -40,7 +40,7 @@ Scanner scanner = new Scanner(System.in);
             }
         } while (opcao != 0);
     }
- 
+
     private static void cadastrarEvento(Scanner scanner, List<Evento> eventos) {
         System.out.print("Nome do evento: ");
         String nome = scanner.nextLine();
@@ -53,19 +53,22 @@ Scanner scanner = new Scanner(System.in);
         
         System.out.print("Endereço do local: ");
         String enderecoLocal = scanner.nextLine();
-        
+
+        System.out.print("Número de vagas disponíveis: ");
+        int vagasDisponiveis = scanner.nextInt();
+        scanner.nextLine(); // Consumir a nova linha
+
         Local local = new Local(nomeLocal, enderecoLocal);
-        Evento evento = new Evento(nome, data, local);
+        Evento evento = new Evento(nome, data, local, vagasDisponiveis);
         eventos.add(evento);
 
         System.out.println("Evento cadastrado com sucesso!");
     }
- 
+
     private static void listarEventos(List<Evento> eventos) {
         if (eventos.isEmpty()) {
             System.out.println("Nenhum evento cadastrado.");
-        } 
-        else {
+        } else {
             System.out.println("\nLista de Eventos:");
             for (int i = 0; i < eventos.size(); i++) {
                 Evento evento = eventos.get(i);
@@ -73,16 +76,15 @@ Scanner scanner = new Scanner(System.in);
             }
         }
     }
- 
-  
+
     private static void gerenciarEvento(Scanner scanner, List<Evento> eventos) {
         listarEventos(eventos);
         if (eventos.isEmpty()) return;
- 
+
         System.out.print("Escolha o número do evento para gerenciar: ");
         int opcao = scanner.nextInt();
         scanner.nextLine();  
- 
+
         if (opcao > 0 && opcao <= eventos.size()) {
             Evento eventoSelecionado = eventos.get(opcao - 1);
             int opcGerenciar;
@@ -96,7 +98,7 @@ Scanner scanner = new Scanner(System.in);
                 System.out.print("Escolha uma opção: ");
                 opcGerenciar = scanner.nextInt();
                 scanner.nextLine();
- 
+
                 switch (opcGerenciar) {
                     case 1:
                         adicionarParticipante(scanner, eventoSelecionado);
@@ -119,7 +121,7 @@ Scanner scanner = new Scanner(System.in);
             System.out.println("Evento não encontrado.");
         }
     }
- 
+
     private static void adicionarParticipante(Scanner scanner, Evento evento) {
         System.out.print("Nome do participante: ");
         String nome = scanner.nextLine();
@@ -132,13 +134,13 @@ Scanner scanner = new Scanner(System.in);
         
         System.out.print("Idade do participante: ");
         int idade = scanner.nextInt();
-        scanner.nextLine();  // Consumir a nova linha
- 
+        scanner.nextLine();  
+
         Participante participante = new Participante(nome, email, telefone, idade);
-        evento.casdastrarParticipante(participante);
+        evento.cadastrarParticipante(participante);
         System.out.println("Participante adicionado com sucesso!");
     }
- 
+
     private static void exibirDetalhesEvento(Evento evento) {
         System.out.println("\n--- Detalhes do Evento ---");
         System.out.println("Nome: " + evento.getNome());
@@ -146,15 +148,14 @@ Scanner scanner = new Scanner(System.in);
         System.out.println("Local: " + evento.getLocal().getNome() + " - " + evento.getLocal().getEndereco());
         listarParticipantes(evento);
     }
- 
+
     private static void listarParticipantes(Evento evento) {
-        List<Participante> participantes = evento.getParticipantes();
-        if (participantes.isEmpty()) {
-            System.out.println("Nenhum participante inscrito.");
+        if (evento.getParticipantes().isEmpty()) {
+            System.out.println("Nenhum participante cadastrado.");
         } else {
             System.out.println("\nLista de Participantes:");
-            for (Participante participante : participantes) {
-                System.out.println("- " + participante.getNome() + " (Email: " + participante.getEmail() + ")");
+            for (Participante participante : evento.getParticipantes()) {
+                System.out.println("- " + participante.getNome() + " (Idade: " + participante.getIdade() + ")");
             }
         }
     }
