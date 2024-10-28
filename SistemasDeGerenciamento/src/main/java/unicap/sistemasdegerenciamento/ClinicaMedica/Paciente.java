@@ -1,4 +1,5 @@
 package unicap.sistemasdegerenciamento.ClinicaMedica;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,14 +21,6 @@ public class Paciente {
         this.email = email;
         this.telefone = telefone;
         this.consultas = new ArrayList<>();
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public int getIdade() {
-        return idade;
     }
 
     public void adicionarConsulta(Consulta consulta) {
@@ -68,5 +61,29 @@ public class Paciente {
         } else {
             System.out.println("Consulta não encontrada na data especificada.");
         }
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+    
+    public int getIdade() {
+        return idade;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public List<Consulta> getConsultas() {
+        return consultas;
     }
 }
