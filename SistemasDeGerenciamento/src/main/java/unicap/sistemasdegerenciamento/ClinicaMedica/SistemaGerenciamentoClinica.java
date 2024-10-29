@@ -107,7 +107,7 @@ public class SistemaGerenciamentoClinica {
             try {
                 Date data = formato.parse(dataConsulta);
                 Consulta consulta = new Consulta(paciente, medico, data);
-                consulta.agendarConsulta();
+                paciente.adicionarConsulta(consulta);
 
                 System.out.println("Consulta agendada com sucesso para " + paciente.getNome() + " com o Dr(a). " + medico.getNome());
             }
@@ -124,7 +124,7 @@ public class SistemaGerenciamentoClinica {
         if (medicos.isEmpty()) {
             System.out.println("Nenhum médico cadastrado. Cadastrando um novo médico.");
             return cadastrarMedico(scanner, medicos);
-        } 
+        }
         else {
             System.out.println("\nLista de Médicos:");
             for (int i = 0; i < medicos.size(); i++) {
