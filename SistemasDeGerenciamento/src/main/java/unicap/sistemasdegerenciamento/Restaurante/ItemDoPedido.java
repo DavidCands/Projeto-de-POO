@@ -26,4 +26,8 @@ public class ItemDoPedido {
     public double getPreco() {
         return preco;
     }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 }

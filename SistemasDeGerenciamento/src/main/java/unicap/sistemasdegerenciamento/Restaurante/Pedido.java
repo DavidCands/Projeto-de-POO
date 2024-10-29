@@ -28,7 +28,7 @@ public class Pedido {
         }
     }
 
-    public void removerItem(String nomeItem){
+    public void removerItem(String nomeItem, int quantidade) {
         if(fechado == false){
             ItemDoPedido itemARemover = null;
 
@@ -40,15 +40,22 @@ public class Pedido {
             }
 
             if(itemARemover != null){
-                itens.remove(itemARemover);
-                total -= itemARemover.calcularPrecoTotal();
-                System.out.println("Item removido com sucesso.");
+                if(itemARemover.getQuantidade() > quantidade){
+                    itemARemover.setQuantidade(itemARemover.getQuantidade() - quantidade);
+                    total -= itemARemover.getPreco() * quantidade;
+                    System.out.println(quantidade+ " unidade(s) de " +nomeItem+ "(s) removida(s) com sucesso.");
+                }
+                else {
+                    itens.remove(itemARemover);
+                    total -= itemARemover.calcularPrecoTotal();
+                    System.out.println("Todas as unidades de " +nomeItem+ " foram removidas.");
+                }
             }
-            else{
+            else {
                 System.out.println("Item nao encontrado.");
             }
         }
-        else{
+        else {
             System.out.println("O pedido ja foi fechado!");
         }
     }

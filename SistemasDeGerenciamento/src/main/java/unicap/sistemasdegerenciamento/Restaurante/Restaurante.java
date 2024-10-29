@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Restaurante {
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Mesa> mesas = new ArrayList<>();
@@ -20,6 +21,7 @@ public class Restaurante {
         boolean pedidoCancelado;
         
         do{
+            System.out.println("\n--- Sistema de Gerenciamento de Restaurante ---");
             System.out.println("Essas sao as mesas existentes:");
             for(Mesa mesa : mesas){
                 System.out.println("Mesa " +mesa.getNumero()+ " ocupada: " +mesa.isOcupada());
@@ -59,17 +61,27 @@ public class Restaurante {
                 System.out.println("\nRelatorio de Pedido da Mesa " +mesaEscolhida.getNumero()+ ": ");
                 pedido.gerarRelatorio();
 
-                System.out.println("Voce deseja remover algum item do seu pedido[1- Sim | 2- Nao]? ");
+                System.out.println("\nVoce deseja remover algum item do seu pedido[1- Sim | 2- Nao]? ");
                 opcRemoverItem = scanner.nextInt();
                 
                 if(opcRemoverItem == 1){
                     scanner.nextLine();
-                    System.out.println("Informe o nome do item que deseja remover: ");
-                    String nomeItemRemover = scanner.nextLine();
+                    int opcRemoverItem2;
+                    do{
+                        System.out.println("Informe o nome do item que deseja remover: ");
+                        String nomeItemRemover = scanner.nextLine();
+                        
+                        System.out.println("Informe a quantidade de " +nomeItemRemover+ " que deseja remover: ");
+                        int quantItemRemover = scanner.nextInt();
                     
-                    pedido.removerItem(nomeItemRemover);
-                    System.out.println("\nRelatorio atualizado de Pedido da Mesa " +mesaEscolhida.getNumero()+ ": ");
-                    pedido.gerarRelatorio();
+                        pedido.removerItem(nomeItemRemover, quantItemRemover);
+                        System.out.println("\nRelatorio atualizado de Pedido da Mesa " +mesaEscolhida.getNumero()+ ": ");
+                        pedido.gerarRelatorio();
+                        
+                        System.out.println("\nDeseja remover mais algum item do seu pedido[1- Sim | 2- Nao]? ");
+                        opcRemoverItem2 = scanner.nextInt();
+                        scanner.nextLine();
+                    }while(opcRemoverItem2 == 1);
                 }
                 
                 System.out.println("Voce deseja cancelar o seu pedido[1- Sim | 2- Nao]?");
@@ -97,7 +109,8 @@ public class Restaurante {
 
     private static void exibirCardapio(){
         System.out.println("\n>> Cardapio <<");
-        System.out.println("1- Pizza(R$20.00) \n2- Refrigerante(R$7.00)  \n3- Hamburguer(R$10.00) \n4- Batata Frita(R$8.00) \n5- Jarra de Suco(R$6.00) \n6- Parmegiana(R$32.00) \n7- H2O(R$5.00)");
+        System.out.println("1- Pizza(R$20.00) \n2- Refrigerante(R$7.00)  \n3- Hamburguer(R$10.00) \n4- Batata Frita(R$8.00)");
+        System.out.println("5- Jarra de Suco (R$6.00) \n6- Parmegiana (R$32.00) \n7- H2O (R$5.00)");
     }
     
     private static ItemDoPedido criarItemPedido(int opcPedido, int quantidade){
