@@ -1,3 +1,5 @@
+package unicap.sistemasdegerenciamento.Eventos;
+
 class Participante {
     private String nome;
     private String email;
