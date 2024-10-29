@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Eventos {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Evento> eventos = new ArrayList<>();
@@ -88,7 +88,17 @@ public class Eventos {
                                         System.out.print("Digite a idade do participante: ");
                                         int idadeParticipante = scanner.nextInt();
                                         scanner.nextLine();
-                                        Participante participante = new Participante(nomeParticipante, emailParticipante, telefoneParticipante, idadeParticipante);
+
+                                        System.out.print("O participante é estudante? (true para Sim / false para Não): ");
+                                        boolean isEstudante = scanner.nextBoolean();
+                                        scanner.nextLine();
+
+                                        Participante participante = new Participante(nomeParticipante, emailParticipante, telefoneParticipante, idadeParticipante, isEstudante);
+
+                                        double valorEvento = 100.0;
+                                        double valorComDesconto = participante.calcularDesconto(valorEvento);
+                                        System.out.println("Valor do evento para " + nomeParticipante + ": " + valorComDesconto);
+
                                         eventoGerenciar.cadastrarParticipante(participante);
                                         break;
                                     case 2:
@@ -132,4 +142,3 @@ public class Eventos {
         scanner.close();
     }
 }
-
