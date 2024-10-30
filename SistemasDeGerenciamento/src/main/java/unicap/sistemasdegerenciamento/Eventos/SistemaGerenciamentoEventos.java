@@ -56,7 +56,7 @@ public class SistemaGerenciamentoEventos {
 
         System.out.print("Número de vagas disponíveis: ");
         int vagasDisponiveis = scanner.nextInt();
-        scanner.nextLine(); // Consumir a nova linha
+        scanner.nextLine();
 
         Local local = new Local(nomeLocal, enderecoLocal);
         Evento evento = new Evento(nome, data, local, vagasDisponiveis);
