@@ -3,8 +3,8 @@ package unicap.sistemasdegerenciamento.SistemadeGerenciamento;
 import unicap.sistemasdegerenciamento.Eventos.Eventos;
 import unicap.sistemasdegerenciamento.Restaurante.Restaurante;
 import unicap.sistemasdegerenciamento.ClinicaMedica.Clinica;
+import unicap.sistemasdegerenciamento.ClinicaMedica.ClinicaMedica;
 import unicap.sistemasdegerenciamento.ClinicaMedica.Medico;
-
 import java.util.Scanner;
 
 public class GerenciamentoUnificado {
@@ -12,6 +12,7 @@ public class GerenciamentoUnificado {
     public static void main(String[] args) {
         Evento evento = new Evento();
         Clinica clinica = new Clinica();
+        
         try (Scanner scanner = new Scanner(System.in)) {
             int opcao;
 
@@ -62,15 +63,16 @@ public class GerenciamentoUnificado {
 
     private static void gerenciarClinica() {
         System.out.println("Gerenciando Clínica...");
-        Clinica.main(new String[0]);
+        ClinicaMedica.main(new String[0]);
     }
 
     private static void aplicarDescontoMedico(Clinica clinica, Eventos evento) {
         Scanner scanner = new Scanner(System.in);
+        
         System.out.println("Digite o nome do médico para aplicar o desconto:");
         String nomeMedico = scanner.nextLine();
-        
         Medico medico = clinica.buscarMedicoPorNome(nomeMedico);
+        
         if (medico != null) {
             System.out.println("Digite o preço original do evento:");
             double precoEvento = scanner.nextDouble();
@@ -84,10 +86,10 @@ public class GerenciamentoUnificado {
 
             System.out.println("Preço do evento com desconto: " + precoComDescontoEvento);
             System.out.println("Preço do restaurante com desconto: " + precoComDescontoRestaurante);
-        } else {
+        } 
+        else {
             System.out.println("Médico não encontrado na clínica.");
         }
         scanner.close();
     }
 }
-
