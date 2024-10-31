@@ -8,13 +8,15 @@ public class Evento {
     private String data;
     private Local local;
     private int vagasDisponiveis;
+    private double precoEvento;
     private List<Participante> participantes;
 
-    public Evento(String nome, String data, Local local, int vagasDisponiveis) {
+    public Evento(String nome, String data, Local local, int vagasDisponiveis, double precoEvento) {
         this.nome = nome;
         this.data = data;
         this.local = local;
         this.vagasDisponiveis = vagasDisponiveis;
+        this.precoEvento = precoEvento;
         this.participantes = new ArrayList<>();
     }
 
@@ -76,5 +78,13 @@ public class Evento {
 
     public List<Participante> getParticipantes() { 
         return participantes;
+    }
+    
+    public double getPrecoEvento() {
+        return precoEvento;
+    }
+
+    public void setPrecoEvento(double precoEvento) {
+        this.precoEvento = precoEvento;
     }
 }

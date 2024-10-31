@@ -57,9 +57,12 @@ public class SistemaGerenciamentoEventos {
         System.out.print("Número de vagas disponíveis: ");
         int vagasDisponiveis = scanner.nextInt();
         scanner.nextLine();
+        
+        System.out.println("Digite o preco do evento: R$");
+        double precoEvento = scanner.nextDouble();
 
         Local local = new Local(nomeLocal, enderecoLocal);
-        Evento evento = new Evento(nome, data, local, vagasDisponiveis);
+        Evento evento = new Evento(nome, data, local, vagasDisponiveis, precoEvento);
         eventos.add(evento);
 
         System.out.println("Evento cadastrado com sucesso!");

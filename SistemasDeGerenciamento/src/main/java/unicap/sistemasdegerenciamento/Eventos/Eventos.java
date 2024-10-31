@@ -34,9 +34,11 @@ public class Eventos {
                     System.out.print("Digite o número de vagas disponíveis: ");
                     int vagasEvento = scanner.nextInt();
                     scanner.nextLine();
+                    System.out.println("Digite o preco do evento: R$");
+                    double precoEvento = scanner.nextDouble();
 
                     Local local = new Local(nomeLocal, enderecoLocal);
-                    Evento evento = new Evento(nomeEvento, dataEvento, local, vagasEvento);
+                    Evento evento = new Evento(nomeEvento, dataEvento, local, vagasEvento, precoEvento);
                     eventos.add(evento);
 
                     System.out.println("Evento cadastrado com sucesso!");
