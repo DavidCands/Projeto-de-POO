@@ -54,22 +54,5 @@ public class GerenciamentoUnificado {
  
     private static void gerenciarClinica() {
         Clinica clinica = new Clinica();  
-        clinica.main(new String[0]);
-        public static void main(String[] args) {
-        Clinica clinica = new Clinica();
-        
-        Medico medico1 = new Medico("Dr. João", "Cardiologista");
-        clinica.cadastrarMedico(medico1);
-
-        Evento evento = new Evento(200.00);
-        Restaurante restaurante = new Restaurante(100.00); 
-
-        double precoComDescontoEvento = evento.aplicarDescontoMedico(clinica, medico1);
-        double precoComDescontoRestaurante = restaurante.aplicarDescontoMedico(clinica, medico1);
-
-        System.out.println("Preço do evento com desconto: " + precoComDescontoEvento);
-        System.out.println("Preço do restaurante com desconto: " + precoComDescontoRestaurante);
-    }
-}
-    }
+        clinica.main(new String[0]); 
 }
