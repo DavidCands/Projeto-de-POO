@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class GerenciamentoUnificado {
 
     public static void main(String[] args) {
+
         Clinica clinica = new Clinica();
         try (Scanner scanner = new Scanner(System.in)) {
             int opcao;
@@ -36,7 +37,7 @@ public class GerenciamentoUnificado {
                         gerenciarClinica();
                         break;
                     case 4:
-                        aplicarDescontoMedico(clinica, scanner);
+                        aplicarDescontoMedico(clinica, evento, scanner);
                         break;
                     case 0:
                         System.out.println("Saindo do sistema...");
@@ -64,7 +65,8 @@ public class GerenciamentoUnificado {
         Clinica.main(new String[0]);
     }
 
-    private static void aplicarDescontoMedico(Clinica clinica, Scanner scanner) {
+    private static void aplicarDescontoMedico(Clinica clinica, Eventos evento) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o nome do médico para aplicar o desconto:");
         String nomeMedico = scanner.nextLine();
         
@@ -85,6 +87,7 @@ public class GerenciamentoUnificado {
         } else {
             System.out.println("Médico não encontrado na clínica.");
         }
+        scanner.close();
     }
 }
 
