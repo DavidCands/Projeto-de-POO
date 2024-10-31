@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class GerenciamentoUnificado {
 
     public static void main(String[] args) {
-
+        Evento evento = new Evento();
         Clinica clinica = new Clinica();
         try (Scanner scanner = new Scanner(System.in)) {
             int opcao;
