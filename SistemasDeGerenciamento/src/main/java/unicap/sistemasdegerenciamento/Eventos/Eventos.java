@@ -16,8 +16,8 @@ public class Eventos {
             System.out.println("1. Cadastrar novo evento");
             System.out.println("2. Listar eventos");
             System.out.println("3. Gerenciar um evento");
-            System.out.println("0. Sair");
-            System.out.print("Escolha uma opção: ");
+            System.out.println("0. Voltar");
+            System.out.print("Escolha uma opcao: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
 
@@ -29,12 +29,12 @@ public class Eventos {
                     String dataEvento = scanner.nextLine();
                     System.out.print("Digite o nome do local: ");
                     String nomeLocal = scanner.nextLine();
-                    System.out.print("Digite o endereço do local: ");
+                    System.out.print("Digite o endereco do local: ");
                     String enderecoLocal = scanner.nextLine();
-                    System.out.print("Digite o número de vagas disponíveis: ");
+                    System.out.print("Digite o numero de vagas disponiveis: ");
                     int vagasEvento = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.println("Digite o preco do evento: R$");
+                    System.out.print("Digite o preco do evento: R$");
                     double precoEvento = scanner.nextDouble();
 
                     Local local = new Local(nomeLocal, enderecoLocal);
@@ -59,7 +59,11 @@ public class Eventos {
                     if (eventos.isEmpty()) {
                         System.out.println("Nenhum evento cadastrado para gerenciar.");
                     } else {
-                        System.out.print("Digite o número do evento que deseja gerenciar: ");
+                        System.out.println("\n--- Eventos existentes ---");
+                        for (int i = 0; i < eventos.size(); i++) {
+                            System.out.println((i + 1) + ". " + eventos.get(i).getNome());
+                        }
+                        System.out.print("\nDigite o numero do evento que deseja gerenciar: ");
                         int indiceEvento = scanner.nextInt() - 1;
                         scanner.nextLine();
 
@@ -72,10 +76,10 @@ public class Eventos {
                                 System.out.println("1. Cadastrar participante");
                                 System.out.println("2. Remover participante");
                                 System.out.println("3. Consultar vagas");
-                                System.out.println("4. Gerar relatório de participação");
+                                System.out.println("4. Gerar relatorio de participacao");
                                 System.out.println("5. Exibir detalhes do evento");
                                 System.out.println("0. Voltar");
-                                System.out.print("Escolha uma opção: ");
+                                System.out.print("Escolha uma opcao: ");
                                 opcaoEvento = scanner.nextInt();
                                 scanner.nextLine();
 
@@ -91,7 +95,7 @@ public class Eventos {
                                         int idadeParticipante = scanner.nextInt();
                                         scanner.nextLine();
 
-                                        System.out.print("O participante é estudante? (true para Sim / false para Não): ");
+                                        System.out.print("O participante eh um estudante? (true para Sim / false para Nao): ");
                                         boolean isEstudante = scanner.nextBoolean();
                                         scanner.nextLine();
 
@@ -103,7 +107,7 @@ public class Eventos {
                                         // Calcula o valor com desconto, se aplicável
                                         double valorComDesconto = participante.calcularDesconto(valorEvento);
                                         
-                                        System.out.println("Valor do evento para " + nomeParticipante + ": " + valorComDesconto);
+                                        System.out.println("Valor do evento para " + nomeParticipante + ": R$" + valorComDesconto);
 
                                         // Cadastra o participante com o preço calculado
                                         eventoGerenciar.cadastrarParticipante(participante, valorComDesconto);
@@ -127,12 +131,12 @@ public class Eventos {
                                         System.out.println("Voltando ao menu principal...");
                                         break;
                                     default:
-                                        System.out.println("Opção inválida! Tente novamente.");
+                                        System.out.println("Opcao invalida! Tente novamente.");
                                         break;
                                 }
                             } while (opcaoEvento != 0);
                         } else {
-                            System.out.println("Evento inválido.");
+                            System.out.println("Evento invalido.");
                         }
                     }
                     break;
@@ -142,11 +146,9 @@ public class Eventos {
                     break;
 
                 default:
-                    System.out.println("Opção inválida! Tente novamente.");
+                    System.out.println("Opcao invalida! Tente novamente.");
                     break;
             }
         } while (opcao != 0);
-
-        scanner.close();
     }
 }

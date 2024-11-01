@@ -6,18 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClinicaMedica {
-    public static void main(String[] args) {
+    public static void main(String[] args, Clinica clinica) {
         Scanner scanner = new Scanner(System.in);
-        Clinica clinica = new Clinica();
-        while (true) {
-            System.out.println("\nSistema de Gerenciamento Clínica Médica");
+        //Clinica clinica = new Clinica();
+        int opcao;
+        do {
+            System.out.println("\n--- Sistema de Clinica Medica ---");
             System.out.println("1. Adicionar Paciente");
-            System.out.println("2. Adicionar Médico");
+            System.out.println("2. Adicionar Medico");
             System.out.println("3. Agendar Consulta");
-            System.out.println("4. Exibir Relatório de Consultas");
-            System.out.println("5. Sair");
-            System.out.print("Escolha uma opção: ");
-            int opcao = scanner.nextInt();
+            System.out.println("4. Exibir Relatorio de Consultas");
+            System.out.println("0. Voltar");
+            System.out.print("Escolha uma opcao: ");
+            opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao) {
                 case 1:
@@ -41,43 +42,54 @@ public class ClinicaMedica {
                     
                     System.out.println("Paciente adicionado com sucesso!");
                     break;
+                    
                 case 2:
-                    System.out.print("Digite o nome do médico: ");
+                    System.out.print("Digite o nome do medico: ");
                     String nomeMedico = scanner.nextLine();
-                    System.out.print("Digite a especialidade do médico: ");
+                    
+                    System.out.print("Digite a especialidade do medico: ");
                     String especialidadeMedico = scanner.nextLine();
+                    
                     Medico medico = new Medico(nomeMedico, especialidadeMedico);
                     clinica.adicionarMedico(medico);
-                    System.out.println("Médico adicionado com sucesso!");
+                    
+                    System.out.println("Medico adicionado com sucesso!");
                     break;
+                    
                 case 3:
                     System.out.print("Digite o nome do paciente: ");
                     String nomePacienteConsulta = scanner.nextLine();
+                    
                     Paciente pacienteConsulta = clinica.buscarPacientePorNome(nomePacienteConsulta);
                     if (pacienteConsulta == null) {
-                        System.out.println("Paciente não encontrado.");
+                        System.out.println("Paciente nao encontrado.");
                         break;
                     }
-                    System.out.print("Digite o nome do médico: ");
+                    
+                    System.out.print("Digite o nome do medico: ");
                     String nomeMedicoConsulta = scanner.nextLine();
+                    
                     Medico medicoConsulta = clinica.buscarMedicoPorNome(nomeMedicoConsulta);
                     if (medicoConsulta == null) {
-                        System.out.println("Médico não encontrado.");
+                        System.out.println("Medico nao encontrado.");
                         break;
                     }
                     clinica.agendarConsulta(pacienteConsulta, medicoConsulta, new Date());
                     break;
+                    
                 case 4:
                     clinica.buscarConsultas();
                     break;
-                case 5:
-                    System.out.println("Saindo...");
-                    scanner.close();
-                    System.exit(0);
-                default:
-                    System.out.println("Opção inválida!");
+                    
+                case 0:
+                    System.out.println("Voltando...");
                     break;
+                    
+                default:
+                    System.out.println("Opcao invalida!");
+                    break;
+                    
             }
-        }
+        }while(opcao != 0);
     }
 }

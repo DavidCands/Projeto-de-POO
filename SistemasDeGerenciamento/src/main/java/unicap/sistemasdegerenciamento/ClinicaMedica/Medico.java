@@ -10,15 +10,19 @@ public class Medico {
         this.especialidade = especialidade;
         this.disponivel = true;
     }
+    
     public String getNome() {
         return nome;
     }
+    
     public String getEspecialidade() {
         return especialidade;
     }
+    
     public boolean isDisponivel() {
         return disponivel;
     }
+    
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
