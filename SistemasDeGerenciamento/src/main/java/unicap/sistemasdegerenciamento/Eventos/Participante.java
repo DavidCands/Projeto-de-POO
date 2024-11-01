@@ -47,6 +47,6 @@ class Participante {
         System.out.println("Idade: " + idade);
     }
     public double calcularDesconto(double valorEvento) {
-        return isEstudante ? valorEvento * 0.75 : valorEvento;
+        return isEstudante ? valorEvento * 0.50 : valorEvento;
     }
 }
