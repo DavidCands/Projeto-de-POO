@@ -14,7 +14,6 @@ import unicap.sistemasdegerenciamento.Restaurante.Pedido;
 public class GerenciamentoUnificado {
 
     public static void main(String[] args) {
-        //Evento evento = new Evento()
         Clinica clinica = new Clinica();
         
         try (Scanner scanner = new Scanner(System.in)) {
@@ -83,27 +82,11 @@ public class GerenciamentoUnificado {
             int opc = scanner.nextInt();
             
             if(opc == 1){
-                /*System.out.println("Informe o nome do Evento: ");
-                String nomeDoEvento = scanner.nextLine();
-
-                System.out.print("Informe a data do evento (DD/MM/AAAA): ");
-                String dataEvento = scanner.nextLine();
-
-                System.out.print("Informe o nome do local: ");
-                String nomeLocal = scanner.nextLine();
-
-                System.out.print("Informe o endereco do local: ");
-                String enderecoLocal = scanner.nextLine();
-
-                System.out.print("Informe o numero de vagas disponiveis: ");
-                int vagasEvento = scanner.nextInt();
-                scanner.nextLine();*/
+                
 
                 System.out.print("Informe o preco original do evento: R$");
                 double precoEvento = scanner.nextDouble();
 
-                //Local local = new Local(nomeLocal, enderecoLocal);
-                //Evento evento = new Evento(nomeDoEvento, dataEvento, local, vagasEvento, precoEvento);
 
                 double precoComDescontoEvento = precoEvento * 0.8;
                 System.out.println("Preco do evento com desconto: R$" + precoComDescontoEvento);
@@ -116,29 +99,10 @@ public class GerenciamentoUnificado {
                 double precoComDescontoRestaurante = precoRestaurante * 0.8;
                 System.out.println("Preco do restaurante com desconto: R$" + precoComDescontoRestaurante);
                 
-                
-                /*System.out.print("Informe o ID do pedido: ");
-                int idPedido = scanner.nextInt();
-
-                Pedido pedido = new Pedido(0, new Mesa(0)); // Instância temporária para buscar pedidos
-                Pedido pedidoDesconto = pedido.buscarPedidoPorId(idPedido);
-
-                if (pedidoDesconto != null) {
-                    double totalComDesconto = pedidoDesconto.getTotal() * 0.8; // Aplica 20% de desconto
-                    pedidoDesconto.setTotal(totalComDesconto); // Adiciona um setter para 'total' em Pedido
-
-                    System.out.println("Desconto aplicado! Novo total do pedido com desconto: R$" + totalComDesconto);
-                } 
-                else {
-                    System.out.println("Pedido nao encontrado.");
-                }*/
             }
             else{
                 System.out.println("Opcao invalida!");
             }
-            
-            //Isso linha debaixo muda o preço do evento para todos os participantes da lista
-            //evento.setPrecoEvento(evento.getPrecoEvento() * 0.8);
         }
         else {
             System.out.println("Medico nao encontrado na clinica.");
