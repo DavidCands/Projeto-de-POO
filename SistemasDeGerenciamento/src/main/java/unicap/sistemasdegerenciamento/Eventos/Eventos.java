@@ -100,16 +100,11 @@ public class Eventos {
                                         scanner.nextLine();
 
                                         Participante participante = new Participante(nomeParticipante, emailParticipante, telefoneParticipante, idadeParticipante, isEstudante);
-
-                                        // Define o preço original do evento
                                         double valorEvento = eventoGerenciar.getPrecoEvento();
                                         
-                                        // Calcula o valor com desconto, se aplicável
                                         double valorComDesconto = participante.calcularDesconto(valorEvento);
                                         
                                         System.out.println("Valor do evento para " + nomeParticipante + ": R$" + valorComDesconto);
-
-                                        // Cadastra o participante com o preço calculado
                                         eventoGerenciar.cadastrarParticipante(participante, valorComDesconto);
                                         break;
                                         
