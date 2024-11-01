@@ -2,6 +2,7 @@ package unicap.sistemasdegerenciamento.SistemadeGerenciamento;
 
 import unicap.sistemasdegerenciamento.Eventos.Eventos;
 import unicap.sistemasdegerenciamento.Eventos.Evento;
+import unicap.sistemasdegerenciamento.Eventos.Local;
 import unicap.sistemasdegerenciamento.Restaurante.Restaurante;
 import unicap.sistemasdegerenciamento.ClinicaMedica.Clinica;
 import unicap.sistemasdegerenciamento.ClinicaMedica.ClinicaMedica;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 public class GerenciamentoUnificado {
 
     public static void main(String[] args) {
-        //Evento evento = new Evento();
+        //Evento evento = new Evento()
         Clinica clinica = new Clinica();
         
         try (Scanner scanner = new Scanner(System.in)) {
@@ -39,7 +40,7 @@ public class GerenciamentoUnificado {
                         gerenciarClinica();
                         break;
                     case 4:
-                        aplicarDescontoMedico(clinica);
+                        aplicarDescontoMedico(clinica /*,evento*/);
                         break;
                     case 0:
                         System.out.println("Saindo do sistema...");
@@ -67,7 +68,7 @@ public class GerenciamentoUnificado {
         ClinicaMedica.main(new String[0]);
     }
 
-    private static void aplicarDescontoMedico(Clinica clinica /*Eventos evento*/) {
+    private static void aplicarDescontoMedico(Clinica clinica) {
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Digite o nome do medico para aplicar o desconto:");
@@ -75,19 +76,41 @@ public class GerenciamentoUnificado {
         Medico medico = clinica.buscarMedicoPorNome(nomeMedico);
         
         if (medico != null) {
-            System.out.println("Digite o preco original do evento:");
+            System.out.println("Informe o nome do Evento: ");
+            String nomeDoEvento = scanner.nextLine();
+            
+            System.out.print("Informe a data do evento (DD/MM/AAAA): ");
+            String dataEvento = scanner.nextLine();
+            
+            System.out.print("Informe o nome do local: ");
+            String nomeLocal = scanner.nextLine();
+            
+            System.out.print("Informe o endereco do local: ");
+            String enderecoLocal = scanner.nextLine();
+            
+            System.out.print("Informe o numero de vagas disponíveis: ");
+            int vagasEvento = scanner.nextInt();
+            scanner.nextLine();
+            
+            System.out.println("Informe o preco original do evento:");
             double precoEvento = scanner.nextDouble();
-            scanner.nextLine();
-
-            System.out.println("Digite o preco original do restaurante:");
-            double precoRestaurante = scanner.nextDouble();
-            scanner.nextLine();
+            
+            Local local = new Local(nomeLocal, enderecoLocal);
+            Evento evento = new Evento(nomeDoEvento, dataEvento, local, vagasEvento, precoEvento);
+            
             double precoComDescontoEvento = precoEvento * 0.8;
-            double precoComDescontoRestaurante = precoRestaurante * 0.8;
+            
+            //Isso linha debaixo muda o preço do evento para todos os parrticipantes da lista
+            //evento.setPrecoEvento(evento.getPrecoEvento() * 0.8);
+            
+            //System.out.println("Digite o preco original do restaurante:");
+            //double precoRestaurante = scanner.nextDouble();
+            //scanner.nextLine();
+            //double precoComDescontoRestaurante = precoRestaurante * 0.8;
 
             System.out.println("Preco do evento com desconto: " + precoComDescontoEvento);
-            System.out.println("Preco do restaurante com desconto: " + precoComDescontoRestaurante);
-        } 
+            //System.out.println("Preco do restaurante com desconto: " + precoComDescontoRestaurante);
+        }
         else {
             System.out.println("Medico nao encontrado na clinica.");
         }

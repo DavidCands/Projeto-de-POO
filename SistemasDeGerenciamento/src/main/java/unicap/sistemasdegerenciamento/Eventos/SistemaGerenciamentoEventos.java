@@ -144,7 +144,7 @@ public class SistemaGerenciamentoEventos {
         scanner.nextLine();  
         
         Participante participante = new Participante(nome, email, telefone, idade, isEstudante);
-        evento.cadastrarParticipante(participante);
+        //evento.cadastrarParticipante(participante);
         System.out.println("Participante adicionado com sucesso!");
     }
 

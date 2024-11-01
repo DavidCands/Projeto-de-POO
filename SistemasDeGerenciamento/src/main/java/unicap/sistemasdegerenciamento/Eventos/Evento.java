@@ -9,6 +9,7 @@ public class Evento {
     private Local local;
     private int vagasDisponiveis;
     private double precoEvento;
+    private Participante precoPago;
     private List<Participante> participantes;
 
     public Evento(String nome, String data, Local local, int vagasDisponiveis, double precoEvento) {
@@ -20,8 +21,9 @@ public class Evento {
         this.participantes = new ArrayList<>();
     }
 
-    public void cadastrarParticipante(Participante participante) {
+    public void cadastrarParticipante(Participante participante, double precoPago) {
         if (vagasDisponiveis > 0) {
+            participante.setPrecoPago(precoPago);
             participantes.add(participante);
             vagasDisponiveis--;
             System.out.println("Participante cadastrado!");

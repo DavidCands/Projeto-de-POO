@@ -1,6 +1,6 @@
 package unicap.sistemasdegerenciamento.Eventos;
 
-class Local {
+public class Local {
     private String nome;
     private String endereco;
 

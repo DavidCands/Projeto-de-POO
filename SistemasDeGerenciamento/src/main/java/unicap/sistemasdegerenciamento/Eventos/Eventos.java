@@ -97,12 +97,18 @@ public class Eventos {
 
                                         Participante participante = new Participante(nomeParticipante, emailParticipante, telefoneParticipante, idadeParticipante, isEstudante);
 
-                                        double valorEvento = 100.0;
+                                        // Define o preço original do evento
+                                        double valorEvento = eventoGerenciar.getPrecoEvento();
+                                        
+                                        // Calcula o valor com desconto, se aplicável
                                         double valorComDesconto = participante.calcularDesconto(valorEvento);
+                                        
                                         System.out.println("Valor do evento para " + nomeParticipante + ": " + valorComDesconto);
 
-                                        eventoGerenciar.cadastrarParticipante(participante);
+                                        // Cadastra o participante com o preço calculado
+                                        eventoGerenciar.cadastrarParticipante(participante, valorComDesconto);
                                         break;
+                                        
                                     case 2:
                                         System.out.print("Digite o nome do participante a ser removido: ");
                                         String nomeRemover = scanner.nextLine();

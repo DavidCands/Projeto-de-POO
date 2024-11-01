@@ -6,7 +6,8 @@ class Participante {
     private String telefone;
     private int idade;
     private boolean isEstudante;
-
+    private double precoPago;
+    
     public Participante(String nome, String email, String telefone, int idade, boolean isEstudante) {
         this.nome = nome;
         this.email = email;
@@ -29,6 +30,14 @@ class Participante {
 
     public int getIdade() {
         return idade;
+    }
+    
+    public double getPrecoPago() {
+        return precoPago;
+    }
+    
+    public void setPrecoPago(double precoPago) {
+        this.precoPago = precoPago;
     }
 
     public void exibirDetalhes() {
