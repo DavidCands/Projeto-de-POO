@@ -9,6 +9,7 @@ public class Pedido {
     private List<ItemDoPedido> itens;
     private double total;
     private boolean fechado;
+    private List<Pedido> pedidos;
 
     public Pedido(int id, Mesa mesa) {
         this.id = id;
@@ -16,8 +17,9 @@ public class Pedido {
         this.itens = new ArrayList<>();
         this.total = 0.0;
         this.fechado = false;
+        pedidos = new ArrayList<>();
     }
-    
+
     public void adicionarItem(ItemDoPedido item){
         if(fechado == false){
             itens.add(item);
@@ -58,6 +60,11 @@ public class Pedido {
         else {
             System.out.println("O pedido ja foi fechado!");
         }
+    }
+    
+    public void adicionarPedido(Pedido pedido) {
+        pedidos.add(pedido);
+        System.out.println("Pedido ID " + pedido.getId() + " adicionado com sucesso.");
     }
     
     public void cancelarPedido(){
@@ -104,6 +111,16 @@ public class Pedido {
             System.out.println("Conta aberta");
         }
     }
+    
+    public Pedido buscarPedidoPorId(int id) {
+        for (Pedido pedido : pedidos) {
+            if (pedido.getId() == id) {
+                return pedido;
+            }
+        }
+        System.out.println("Pedido com ID " + this.getId() + " não encontrado.");
+        return null;
+    }
 
     public int getId(){
         return id;
@@ -115,6 +132,18 @@ public class Pedido {
 
     public List<ItemDoPedido> getItens(){
         return itens;
+    }
+    
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+    
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public boolean isFechado(){

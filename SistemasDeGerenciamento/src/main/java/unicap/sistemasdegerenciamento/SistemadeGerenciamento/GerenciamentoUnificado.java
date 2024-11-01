@@ -4,10 +4,12 @@ import unicap.sistemasdegerenciamento.Eventos.Eventos;
 import unicap.sistemasdegerenciamento.Eventos.Evento;
 import unicap.sistemasdegerenciamento.Eventos.Local;
 import unicap.sistemasdegerenciamento.Restaurante.Restaurante;
+import unicap.sistemasdegerenciamento.Restaurante.Mesa;
 import unicap.sistemasdegerenciamento.ClinicaMedica.Clinica;
 import unicap.sistemasdegerenciamento.ClinicaMedica.ClinicaMedica;
 import unicap.sistemasdegerenciamento.ClinicaMedica.Medico;
 import java.util.Scanner;
+import unicap.sistemasdegerenciamento.Restaurante.Pedido;
 
 public class GerenciamentoUnificado {
 
@@ -76,40 +78,67 @@ public class GerenciamentoUnificado {
         Medico medico = clinica.buscarMedicoPorNome(nomeMedico);
         
         if (medico != null) {
-            System.out.println("Informe o nome do Evento: ");
-            String nomeDoEvento = scanner.nextLine();
+            System.out.println("1- Desconto no Evento \n2- Desconto no Restaurante");
+            System.out.println("Aonde deseja aplicar o desconto?");
+            int opc = scanner.nextInt();
             
-            System.out.print("Informe a data do evento (DD/MM/AAAA): ");
-            String dataEvento = scanner.nextLine();
+            if(opc == 1){
+                /*System.out.println("Informe o nome do Evento: ");
+                String nomeDoEvento = scanner.nextLine();
+
+                System.out.print("Informe a data do evento (DD/MM/AAAA): ");
+                String dataEvento = scanner.nextLine();
+
+                System.out.print("Informe o nome do local: ");
+                String nomeLocal = scanner.nextLine();
+
+                System.out.print("Informe o endereco do local: ");
+                String enderecoLocal = scanner.nextLine();
+
+                System.out.print("Informe o numero de vagas disponiveis: ");
+                int vagasEvento = scanner.nextInt();
+                scanner.nextLine();*/
+
+                System.out.print("Informe o preco original do evento: R$");
+                double precoEvento = scanner.nextDouble();
+
+                //Local local = new Local(nomeLocal, enderecoLocal);
+                //Evento evento = new Evento(nomeDoEvento, dataEvento, local, vagasEvento, precoEvento);
+
+                double precoComDescontoEvento = precoEvento * 0.8;
+                System.out.println("Preco do evento com desconto: R$" + precoComDescontoEvento);
+            }
             
-            System.out.print("Informe o nome do local: ");
-            String nomeLocal = scanner.nextLine();
-            
-            System.out.print("Informe o endereco do local: ");
-            String enderecoLocal = scanner.nextLine();
-            
-            System.out.print("Informe o numero de vagas disponiveis: ");
-            int vagasEvento = scanner.nextInt();
-            scanner.nextLine();
-            
-            System.out.print("Informe o preco original do evento: R$");
-            double precoEvento = scanner.nextDouble();
-            
-            Local local = new Local(nomeLocal, enderecoLocal);
-            Evento evento = new Evento(nomeDoEvento, dataEvento, local, vagasEvento, precoEvento);
-            
-            double precoComDescontoEvento = precoEvento * 0.8;
+            else if(opc == 2){
+                System.out.println("Informe o preco original da conta do restaurante: R$");
+                double precoRestaurante = scanner.nextDouble();
+                scanner.nextLine();
+                double precoComDescontoRestaurante = precoRestaurante * 0.8;
+                System.out.println("Preco do restaurante com desconto: R$" + precoComDescontoRestaurante);
+                
+                
+                /*System.out.print("Informe o ID do pedido: ");
+                int idPedido = scanner.nextInt();
+
+                Pedido pedido = new Pedido(0, new Mesa(0)); // Instância temporária para buscar pedidos
+                Pedido pedidoDesconto = pedido.buscarPedidoPorId(idPedido);
+
+                if (pedidoDesconto != null) {
+                    double totalComDesconto = pedidoDesconto.getTotal() * 0.8; // Aplica 20% de desconto
+                    pedidoDesconto.setTotal(totalComDesconto); // Adiciona um setter para 'total' em Pedido
+
+                    System.out.println("Desconto aplicado! Novo total do pedido com desconto: R$" + totalComDesconto);
+                } 
+                else {
+                    System.out.println("Pedido nao encontrado.");
+                }*/
+            }
+            else{
+                System.out.println("Opcao invalida!");
+            }
             
             //Isso linha debaixo muda o preço do evento para todos os participantes da lista
             //evento.setPrecoEvento(evento.getPrecoEvento() * 0.8);
-            
-            //System.out.println("Digite o preco original do restaurante: R$");
-            //double precoRestaurante = scanner.nextDouble();
-            //scanner.nextLine();
-            //double precoComDescontoRestaurante = precoRestaurante * 0.8;
-
-            System.out.println("Preco do evento com desconto: R$" + precoComDescontoEvento);
-            //System.out.println("Preco do restaurante com desconto: " + precoComDescontoRestaurante);
         }
         else {
             System.out.println("Medico nao encontrado na clinica.");

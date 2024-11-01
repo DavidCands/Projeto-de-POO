@@ -105,7 +105,6 @@ public class Restaurante {
             System.out.println("\nDeseja prosseguir [1- Sim | 2- Nao]? ");
             resposta = scanner.nextInt();
         }while(resposta == 1);
-        scanner.close();
     }
 
     private static void exibirCardapio(){
