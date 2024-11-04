@@ -6,14 +6,17 @@ class Participante {
     private String telefone;
     private int idade;
     private boolean isEstudante;
+    private boolean isMedico;
     private double precoPago;
     
-    public Participante(String nome, String email, String telefone, int idade, boolean isEstudante) {
+    public Participante(String nome, String email, String telefone, int idade, boolean isEstudante, boolean isMedico, double precoPago) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
         this.idade = idade;
         this.isEstudante = isEstudante;
+        this.isMedico = isMedico;
+        this.precoPago = precoPago;
     }
 
     public String getNome() {
@@ -46,7 +49,18 @@ class Participante {
         System.out.println("Telefone: " + telefone);
         System.out.println("Idade: " + idade);
     }
-    public double calcularDesconto(double valorEvento) {
-        return isEstudante ? valorEvento * 0.50 : valorEvento;
+    
+    public void calcularDesconto(double valorEvento) {
+        if(isEstudante){
+            System.out.println("Desconto para o Estudante aplicado!");
+            this.precoPago = valorEvento * 0.50;
+        }
+        else if(isMedico){
+            System.out.println("Desconto para o Medico aplicado!");
+            this.precoPago = valorEvento * 0.80;
+        }
+        else{
+            this.precoPago = valorEvento;
+        }
     }
 }

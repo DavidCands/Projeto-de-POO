@@ -21,9 +21,8 @@ public class Evento {
         this.participantes = new ArrayList<>();
     }
 
-    public void cadastrarParticipante(Participante participante, double precoPago) {
+    public void cadastrarParticipante(Participante participante) {
         if (vagasDisponiveis > 0) {
-            participante.setPrecoPago(precoPago);
             participantes.add(participante);
             vagasDisponiveis--;
             System.out.println("Participante cadastrado!");
@@ -38,22 +37,22 @@ public class Evento {
             vagasDisponiveis++;
             System.out.println("Participante removido!");
         } else {
-            System.out.println("Participante não encontrado!");
+            System.out.println("Participante nao encontrado!");
         }
     }
 
     public void consultarVagas() {
-        System.out.println("Vagas disponíveis: " + vagasDisponiveis);
+        System.out.println("Vagas disponiveis: " + vagasDisponiveis);
     }
 
     public void gerarRelatorioParticipacao() {
-        System.out.println("\n--- Relatório de Participantes ---");
+        System.out.println("\n--- Relatorio de Participantes ---");
         System.out.println("Evento: " + nome);
         System.out.println("Data: " + data);
         System.out.println("Local: " + local.getNome() + ", " + local.getEndereco());
         System.out.println("Participantes:");
         for (Participante participante : participantes) {
-            System.out.println("- " + participante.getNome() + " (Idade: " + participante.getIdade() + ", Email: " + participante.getEmail() + ")");
+            System.out.println("- " + participante.getNome() + " (Idade: " + participante.getIdade() + ", Email: " + participante.getEmail() + ", Preco pago: R$" + participante.getPrecoPago() + ")");
         }
     }
 
@@ -62,7 +61,7 @@ public class Evento {
         System.out.println("Nome do evento: " + nome);
         System.out.println("Data: " + data);
         System.out.println("Local: " + local.getNome() + " - " + local.getEndereco());
-        System.out.println("Vagas disponíveis: " + vagasDisponiveis);
+        System.out.println("Vagas disponiveis: " + vagasDisponiveis);
         System.out.println("----------------------------");
     }
 

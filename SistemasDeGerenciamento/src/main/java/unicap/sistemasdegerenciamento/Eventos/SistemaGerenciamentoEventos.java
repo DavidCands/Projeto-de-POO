@@ -143,7 +143,7 @@ public class SistemaGerenciamentoEventos {
         boolean isEstudante = scanner.nextBoolean();
         scanner.nextLine();  
         
-        Participante participante = new Participante(nome, email, telefone, idade, isEstudante);
+        //Participante participante = new Participante(nome, email, telefone, idade, isEstudante);
         //evento.cadastrarParticipante(participante);
         System.out.println("Participante adicionado com sucesso!");
     }

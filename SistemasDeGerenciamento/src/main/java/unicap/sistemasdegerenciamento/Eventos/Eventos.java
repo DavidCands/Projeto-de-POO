@@ -3,9 +3,10 @@ package unicap.sistemasdegerenciamento.Eventos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import unicap.sistemasdegerenciamento.ClinicaMedica.Clinica;
 
 public class Eventos {
-    public static void main(String[] args) {
+    public static void main(String[] args, Clinica clinica) {
         Scanner scanner = new Scanner(System.in);
         List<Evento> eventos = new ArrayList<>();
 
@@ -87,6 +88,9 @@ public class Eventos {
                                     case 1:
                                         System.out.print("Digite o nome do participante: ");
                                         String nomeParticipante = scanner.nextLine();
+                                        
+                                        boolean isMedico = clinica.buscarMedicoPorNome(nomeParticipante) != null;
+                                        
                                         System.out.print("Digite o email do participante: ");
                                         String emailParticipante = scanner.nextLine();
                                         System.out.print("Digite o telefone do participante: ");
@@ -95,17 +99,21 @@ public class Eventos {
                                         int idadeParticipante = scanner.nextInt();
                                         scanner.nextLine();
 
-                                        System.out.print("O participante eh um estudante? (true para Sim / false para Nao): ");
-                                        boolean isEstudante = scanner.nextBoolean();
-                                        scanner.nextLine();
-
-                                        Participante participante = new Participante(nomeParticipante, emailParticipante, telefoneParticipante, idadeParticipante, isEstudante);
+                                        boolean isEstudante = false;
+                                        if(!isMedico){
+                                            System.out.print("O participante eh um estudante? (S/N): ");
+                                            isEstudante = scanner.nextLine().equalsIgnoreCase("S");
+                                        }
+                                        
                                         double valorEvento = eventoGerenciar.getPrecoEvento();
                                         
-                                        double valorComDesconto = participante.calcularDesconto(valorEvento);
+                                        Participante participante = new Participante(nomeParticipante, emailParticipante, telefoneParticipante, idadeParticipante, isEstudante, isMedico, valorEvento);
                                         
-                                        System.out.println("Valor do evento para " + nomeParticipante + ": R$" + valorComDesconto);
-                                        eventoGerenciar.cadastrarParticipante(participante, valorComDesconto);
+                                        participante.calcularDesconto(valorEvento);
+                                        
+                                        System.out.println("Valor do evento para " + nomeParticipante + ": R$" + participante.getPrecoPago());
+
+                                        eventoGerenciar.cadastrarParticipante(participante);
                                         break;
                                         
                                     case 2:
@@ -113,18 +121,23 @@ public class Eventos {
                                         String nomeRemover = scanner.nextLine();
                                         eventoGerenciar.removerParticipante(nomeRemover);
                                         break;
+                                        
                                     case 3:
                                         eventoGerenciar.consultarVagas();
                                         break;
+                                        
                                     case 4:
                                         eventoGerenciar.gerarRelatorioParticipacao();
                                         break;
+                                        
                                     case 5:
                                         eventoGerenciar.exibirDetalhes();
                                         break;
+                                        
                                     case 0:
                                         System.out.println("Voltando ao menu principal...");
                                         break;
+                                        
                                     default:
                                         System.out.println("Opcao invalida! Tente novamente.");
                                         break;

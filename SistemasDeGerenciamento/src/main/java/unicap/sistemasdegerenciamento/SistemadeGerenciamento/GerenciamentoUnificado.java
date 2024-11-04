@@ -24,7 +24,6 @@ public class GerenciamentoUnificado {
                 System.out.println("1. Gerenciar Eventos");
                 System.out.println("2. Gerenciar Restaurante");
                 System.out.println("3. Gerenciar Clinica");
-                System.out.println("4. Aplicar Desconto para Medico");
                 System.out.println("0. Sair");
                 System.out.print("Escolha uma opcao: ");
                 opcao = scanner.nextInt();
@@ -32,16 +31,13 @@ public class GerenciamentoUnificado {
 
                 switch (opcao) {
                     case 1:
-                        gerenciarEventos();
+                        gerenciarEventos(clinica);
                         break;
                     case 2:
                         gerenciarRestaurante();
                         break;
                     case 3:
                         gerenciarClinica(clinica);
-                        break;
-                    case 4:
-                        aplicarDescontoMedico(clinica /*,evento*/);
                         break;
                     case 0:
                         System.out.println("Saindo do sistema...");
@@ -54,9 +50,9 @@ public class GerenciamentoUnificado {
         }
     }
     
-    private static void gerenciarEventos() {
+    private static void gerenciarEventos(Clinica clinica) {
         System.out.println("Gerenciando Eventos...");
-        Eventos.main(new String[0]);
+        Eventos.main(new String[0], clinica);
     }
     
     private static void gerenciarRestaurante() {
