@@ -19,6 +19,7 @@ public class Pedido {
         this.itens = new ArrayList<>();
         this.total = 0.0;
         this.fechado = false;
+        this.isMedico = isMedico;
         pedidos = new ArrayList<>();
     }
 
