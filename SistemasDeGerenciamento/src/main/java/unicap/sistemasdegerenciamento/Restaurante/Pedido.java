@@ -5,22 +5,21 @@ import java.util.List;
 
 public class Pedido {
     private int id;
-    private String nome;  
     private Mesa mesa;
     private List<ItemDoPedido> itens;
     private double total;
     private boolean fechado;
     private List<Pedido> pedidos;
+    private boolean isMedico; 
 
-    public Pedido(int id, String nome, Mesa mesa) {
+    public Pedido(int id, Mesa mesa, boolean isMedico) {
         this.id = id;
-        this.nome = nome; 
         this.mesa = mesa;
         this.itens = new ArrayList<>();
         this.total = 0.0;
         this.fechado = false;
+        this.pedidos = new ArrayList<>();
         this.isMedico = isMedico;
-        pedidos = new ArrayList<>();
     }
 
     public void adicionarItem(ItemDoPedido item) {
@@ -77,6 +76,7 @@ public class Pedido {
     }
 
     public void fecharPedido() {
+        calcularDesconto(); 
         this.fechado = true;
         System.out.println("\n>> Conta Fechada <<");
         System.out.println("Conta Final:");
@@ -89,7 +89,6 @@ public class Pedido {
 
     public void gerarRelatorio() {
         System.out.println("Pedido ID: " + this.getId());
-        System.out.println("Nome do Pedido: " + this.getNome());  
         System.out.println("Mesa: " + this.mesa.getNumero());
         System.out.println("------------------");
         System.out.println("Pedido do Cliente:");
@@ -110,22 +109,23 @@ public class Pedido {
         }
     }
 
+    public void calcularDesconto() {
+        if (isMedico) {
+            System.out.println("Desconto para o Médico aplicado!");
+            this.total *= 0.80; 
+        } else {
+            System.out.println("Nenhum desconto aplicado.");
+        }
+    }
+
     public Pedido buscarPedidoPorId(int id) {
         for (Pedido pedido : pedidos) {
             if (pedido.getId() == id) {
                 return pedido;
             }
         }
-        System.out.println("Pedido com ID " + id + " não encontrado.");
+        System.out.println("Pedido com ID " + this.getId() + " não encontrado.");
         return null;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public int getId() {
