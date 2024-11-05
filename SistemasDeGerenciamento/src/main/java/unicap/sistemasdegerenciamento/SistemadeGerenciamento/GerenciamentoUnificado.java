@@ -1,15 +1,10 @@
 package unicap.sistemasdegerenciamento.SistemadeGerenciamento;
 
 import unicap.sistemasdegerenciamento.Eventos.Eventos;
-import unicap.sistemasdegerenciamento.Eventos.Evento;
-import unicap.sistemasdegerenciamento.Eventos.Local;
 import unicap.sistemasdegerenciamento.Restaurante.Restaurante;
-import unicap.sistemasdegerenciamento.Restaurante.Mesa;
 import unicap.sistemasdegerenciamento.ClinicaMedica.Clinica;
 import unicap.sistemasdegerenciamento.ClinicaMedica.ClinicaMedica;
-import unicap.sistemasdegerenciamento.ClinicaMedica.Medico;
 import java.util.Scanner;
-import unicap.sistemasdegerenciamento.Restaurante.Pedido;
 
 public class GerenciamentoUnificado {
 
@@ -34,7 +29,7 @@ public class GerenciamentoUnificado {
                         gerenciarEventos(clinica);
                         break;
                     case 2:
-                        gerenciarRestaurante();
+                        gerenciarRestaurante(clinica);
                         break;
                     case 3:
                         gerenciarClinica(clinica);
@@ -55,9 +50,9 @@ public class GerenciamentoUnificado {
         Eventos.main(new String[0], clinica);
     }
     
-    private static void gerenciarRestaurante() {
+    private static void gerenciarRestaurante(Clinica clinica) {
         System.out.println("Gerenciando Restaurante...");
-        Restaurante.main(new String[0]);
+        Restaurante.main(new String[0], clinica);
     }
     
     private static void gerenciarClinica(Clinica clinica) {
@@ -65,7 +60,7 @@ public class GerenciamentoUnificado {
         ClinicaMedica.main(new String[0], clinica);
     }
     
-    private static void aplicarDescontoMedico(Clinica clinica) {
+    /*private static void aplicarDescontoMedico(Clinica clinica) {
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("Digite o nome do medico para aplicar o desconto: ");
@@ -103,5 +98,5 @@ public class GerenciamentoUnificado {
         else {
             System.out.println("Medico nao encontrado na clinica.");
         }
-    }
+    }*/
 }

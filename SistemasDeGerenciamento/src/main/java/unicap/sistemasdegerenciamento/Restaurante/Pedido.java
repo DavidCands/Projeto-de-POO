@@ -12,7 +12,7 @@ public class Pedido {
     private List<Pedido> pedidos;
     private boolean isMedico; 
 
-    public Pedido(int id, Mesa mesa, boolean isMedico) {
+    public Pedido(int id, Mesa mesa, String nomeCliente, boolean isMedico) {
         this.id = id;
         this.mesa = mesa;
         this.itens = new ArrayList<>();
@@ -76,7 +76,7 @@ public class Pedido {
     }
 
     public void fecharPedido() {
-        calcularDesconto(); 
+        calcularDesconto();
         this.fechado = true;
         System.out.println("\n>> Conta Fechada <<");
         System.out.println("Conta Final:");
@@ -91,13 +91,13 @@ public class Pedido {
         System.out.println("Pedido ID: " + this.getId());
         System.out.println("Mesa: " + this.mesa.getNumero());
         System.out.println("------------------");
-        System.out.println("Pedido do Cliente:");
+        System.out.println("Pedido do Cliente ");
 
         for (ItemDoPedido item : this.itens) {
             System.out.println(">> " + item.getNome() + " <<");
             System.out.println("+ Quantidade: " + item.getQuantidade());
-            System.out.println("+ Preço Unitário: R$" + item.getPreco());
-            System.out.println("+ Preço Total: R$" + item.calcularPrecoTotal());
+            System.out.println("+ Preco Unitario: R$" + item.getPreco());
+            System.out.println("+ Preco Total: R$" + item.calcularPrecoTotal());
         }
 
         System.out.println("# Total a pagar: R$" + this.total);
@@ -111,7 +111,7 @@ public class Pedido {
 
     public void calcularDesconto() {
         if (isMedico) {
-            System.out.println("Desconto para o Médico aplicado!");
+            System.out.println("Desconto para o Medico aplicado!");
             this.total *= 0.80; 
         } else {
             System.out.println("Nenhum desconto aplicado.");

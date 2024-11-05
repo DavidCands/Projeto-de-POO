@@ -36,7 +36,7 @@ public class SistemaGerenciamentoRestaurante {
             }
 
             Mesa mesaEscolhida = mesas.get(opcMesa - 1);
-            mesaEscolhida.ocuparMesa();
+            //mesaEscolhida.ocuparMesa();
             Pedido pedido = mesaEscolhida.getPedido();
 
             for(Mesa mesa : mesas){

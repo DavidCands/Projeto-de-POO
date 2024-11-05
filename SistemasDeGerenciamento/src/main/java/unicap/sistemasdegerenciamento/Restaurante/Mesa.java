@@ -8,25 +8,25 @@ public class Mesa {
     public Mesa(int numero){
         this.numero = numero;
         this.ocupada = false;
-        this.pedido = new Pedido(gerarIdDoPedido(), this);
     }
     
     private int gerarIdDoPedido(){
         return (int)(Math.random() * 1000);
     }
     
-    public void ocuparMesa(){
+    public void ocuparMesa(String nomeCliente, boolean isMedico){
         if(ocupada == false){
             ocupada = true;
+            this.pedido = new Pedido(gerarIdDoPedido(), this, nomeCliente, isMedico);
         }
         else{
-            System.out.println("A mesa está ocupada!");
+            System.out.println("A mesa esta ocupada!");
         }
     }
     
     public void liberarMesa(){
         ocupada = false;
-        pedido = new Pedido(gerarIdDoPedido(), this);
+        pedido = null;
     }
 
     public int getNumero(){

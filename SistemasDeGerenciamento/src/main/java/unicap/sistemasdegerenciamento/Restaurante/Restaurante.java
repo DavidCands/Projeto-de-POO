@@ -3,10 +3,11 @@ package unicap.sistemasdegerenciamento.Restaurante;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import unicap.sistemasdegerenciamento.ClinicaMedica.Clinica;
 
 public class Restaurante {
     
-    public static void main(String[] args) {
+    public static void main(String[] args, Clinica clinica) {
         Scanner scanner = new Scanner(System.in);
         List<Mesa> mesas = new ArrayList<>();
         int cont = 1;
@@ -36,7 +37,12 @@ public class Restaurante {
             }
 
             Mesa mesaEscolhida = mesas.get(opcMesa - 1);
-            mesaEscolhida.ocuparMesa();
+            scanner.nextLine();
+            System.out.print("Informe o seu nome: ");
+            String nomeCliente = scanner.nextLine();
+            boolean isMedico = clinica.buscarMedicoPorNome(nomeCliente) != null;
+            
+            mesaEscolhida.ocuparMesa(nomeCliente, isMedico);
             Pedido pedido = mesaEscolhida.getPedido();
 
             for(Mesa mesa : mesas){
@@ -57,7 +63,7 @@ public class Restaurante {
                     System.out.println("Algo mais[1- Sim | 2- Nao]? ");
                     opcMais = scanner.nextInt();
                 }while(opcMais == 1);
-
+                
                 System.out.println("\nRelatorio de Pedido da Mesa " +mesaEscolhida.getNumero()+ ": ");
                 pedido.gerarRelatorio();
 
