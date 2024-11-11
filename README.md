@@ -52,3 +52,4 @@ O sistema pode registrar os pedidos diários e fornecer um resumo do número tot
 Quantos pedidos foram cancelados em um dia específico? <BR>
 O sistema pode registrar os cancelamentos de pedidos e fornecer um relatório com o número total de pedidos cancelados em um dia ou período específico.<BR>
 
+# Projeto PT 2
