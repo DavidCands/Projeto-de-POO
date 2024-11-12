@@ -8,7 +8,7 @@ import java.util.List;
 public class ClinicaMedica {
     public static void main(String[] args, Clinica clinica) {
         Scanner scanner = new Scanner(System.in);
-        //Clinica clinica = new Clinica();
+        Clinica clinica = new Clinica();
         int opcao;
         do {
             System.out.println("\n--- Sistema de Clinica Medica ---");
