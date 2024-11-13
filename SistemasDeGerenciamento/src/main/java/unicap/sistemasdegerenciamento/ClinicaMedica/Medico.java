@@ -1,19 +1,29 @@
-public abstract class Pessoa {
+package unicap.sistemasdegerenciamento.ClinicaMedica;
+
+public class Medico {
     private String nome;
-    private String cpf;
-
-    public Pessoa(String nome, String cpf) {
+    private String especialidade;
+    private boolean disponivel;
+    
+    public Medico(String nome, String especialidade) {
         this.nome = nome;
-        this.cpf = cpf;
+        this.especialidade = especialidade;
+        this.disponivel = true;
     }
-
+    
     public String getNome() {
         return nome;
     }
-
-    public String getCpf() {
-        return cpf;
+    
+    public String getEspecialidade() {
+        return especialidade;
     }
-
-    public abstract String getDescricao();
+    
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+    
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
 }
