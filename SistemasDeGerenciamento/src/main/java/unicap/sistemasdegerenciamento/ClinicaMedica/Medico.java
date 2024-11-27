@@ -1,23 +1,24 @@
 package unicap.sistemasdegerenciamento.ClinicaMedica;
 
-public class Medico extends Pessoa {
+public class Medico extends Pessoa implements Agendavel {
     private String especialidade;
     private boolean disponivel;
-    
+
     public Medico(String nome, String cpf, String especialidade) {
-        super(nome, cpf);  
+        super(nome, cpf);
         this.especialidade = especialidade;
         this.disponivel = true;
     }
-    
-    public String getEspecialidade() {
-        return especialidade;
+
+    @Override
+    public void exibirInformacoes() {
+        System.out.println("Médico: " + getNome() + ", CPF: " + getCpf() + ", Especialidade: " + especialidade + ", Disponível: " + (disponivel ? "Sim" : "Não"));
     }
-    
+
     public boolean isDisponivel() {
         return disponivel;
     }
-    
+
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
