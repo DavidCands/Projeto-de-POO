@@ -6,18 +6,23 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
-public class Paciente extends Pessoa {
+public class Paciente extends Pessoa implements Agendavel {
     private int idade;
     private String email;
     private String telefone;
     private List<Consulta> consultas;
 
     public Paciente(String nome, String cpf, int idade, String email, String telefone) {
-        super(nome, cpf);  
+        super(nome, cpf);
         this.idade = idade;
         this.email = email;
         this.telefone = telefone;
         this.consultas = new ArrayList<>();
+    }
+
+    @Override
+    public void exibirInformacoes() {
+        System.out.println("Paciente: " + getNome() + ", CPF: " + getCpf() + ", Idade: " + idade + ", Email: " + email + ", Telefone: " + telefone);
     }
 
     public void adicionarConsulta(Consulta consulta) {
@@ -26,9 +31,9 @@ public class Paciente extends Pessoa {
 
     public void listarConsultas() {
         if (consultas.isEmpty()) {
-            System.out.println("Nenhuma consulta agendada para " + getNome()); 
+            System.out.println("Nenhuma consulta agendada para " + getNome());
         } else {
-            System.out.println("Consultas de " + getNome() + ":");  
+            System.out.println("Consultas de " + getNome() + ":");
             for (Consulta consulta : consultas) {
                 System.out.println("Data: " + consulta.getData() + ", Médico: " + consulta.getMedico().getNome());
             }
@@ -43,7 +48,7 @@ public class Paciente extends Pessoa {
             System.out.println("Formato de data inválido! Use dd/MM/yyyy.");
             return;
         }
-        
+
         Consulta consultaParaRemover = null;
         for (Consulta consulta : consultas) {
             if (consulta.getData().equals(dataParaCancelar)) {
@@ -51,7 +56,7 @@ public class Paciente extends Pessoa {
                 break;
             }
         }
-        
+
         if (consultaParaRemover != null) {
             consultas.remove(consultaParaRemover);
             System.out.println("Consulta cancelada com sucesso.");
@@ -76,4 +81,3 @@ public class Paciente extends Pessoa {
         return consultas;
     }
 }
-
