@@ -9,7 +9,6 @@ public class Evento {
     private Local local;
     private int vagasDisponiveis;
     private double precoEvento;
-    private Participante precoPago;
     private List<Participante> participantes;
 
     public Evento(String nome, String data, Local local, int vagasDisponiveis, double precoEvento) {
@@ -52,8 +51,9 @@ public class Evento {
         System.out.println("Local: " + local.getNome() + ", " + local.getEndereco());
         System.out.println("Participantes:");
         for (Participante participante : participantes) {
-            System.out.println("- " + participante.getNome() + " (Idade: " + participante.getIdade() + ", Email: " + participante.getEmail() + ", Preco pago: R$" + participante.getPrecoPago() + ")");
+            participante.exibirInformacoes();
         }
+        System.out.println("Quantidade total de participantes: " + participantes.size());
     }
 
     public void exibirDetalhes() {
@@ -63,6 +63,10 @@ public class Evento {
         System.out.println("Local: " + local.getNome() + " - " + local.getEndereco());
         System.out.println("Vagas disponiveis: " + vagasDisponiveis);
         System.out.println("----------------------------");
+    }
+
+    public void setPrecoEvento(double precoEvento) {
+        this.precoEvento = precoEvento;
     }
 
     public String getNome() {
@@ -83,9 +87,5 @@ public class Evento {
     
     public double getPrecoEvento() {
         return precoEvento;
-    }
-
-    public void setPrecoEvento(double precoEvento) {
-        this.precoEvento = precoEvento;
     }
 }
