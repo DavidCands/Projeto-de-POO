@@ -1,7 +1,6 @@
 package unicap.sistemasdegerenciamento.ClinicaMedica;
 
 import java.util.Scanner;
-import java.util.Date;
 
 public class ClinicaMedica {
     public static void main(String[] args) {
@@ -11,76 +10,47 @@ public class ClinicaMedica {
         do {
             System.out.println("\n--- Sistema de Clinica Medica ---");
             System.out.println("1. Adicionar Paciente");
-            System.out.println("2. Adicionar Medico");
-            System.out.println("3. Agendar Consulta");
-            System.out.println("4. Exibir Relatorio de Consultas");
+            System.out.println("2. Adicionar Médico");
+            System.out.println("3. Exibir Informações de Pessoas");
             System.out.println("0. Voltar");
-            System.out.print("Escolha uma opcao: ");
+            System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
+
             switch (opcao) {
                 case 1:
                     System.out.print("Digite o nome do paciente: ");
                     String nomePaciente = scanner.nextLine();
-
                     System.out.print("Digite o CPF do paciente: ");
                     String cpfPaciente = scanner.nextLine();
-
-                    System.out.println("Digite a idade do paciente: ");
+                    System.out.print("Digite a idade do paciente: ");
                     int idadePaciente = scanner.nextInt();
-
-                    System.out.println("Digite o email do paciente: ");
+                    scanner.nextLine();
+                    System.out.print("Digite o email do paciente: ");
                     String emailPaciente = scanner.nextLine();
-
-                    System.out.println("Digite o telefone do paciente: ");
+                    System.out.print("Digite o telefone do paciente: ");
                     String telefonePaciente = scanner.nextLine();
 
                     Paciente paciente = new Paciente(nomePaciente, cpfPaciente, idadePaciente, emailPaciente, telefonePaciente);
-                    clinica.adicionarPaciente(paciente);
-
+                    clinica.adicionarPessoa(paciente);
                     System.out.println("Paciente adicionado com sucesso!");
                     break;
 
                 case 2:
-                    System.out.print("Digite o nome do medico: ");
+                    System.out.print("Digite o nome do médico: ");
                     String nomeMedico = scanner.nextLine();
-
-                    System.out.print("Digite a especialidade do medico: ");
+                    System.out.print("Digite o CPF do médico: ");
+                    String cpfMedico = scanner.nextLine();
+                    System.out.print("Digite a especialidade do médico: ");
                     String especialidadeMedico = scanner.nextLine();
 
-                    Medico medico = new Medico(nomeMedico, "00000000000", especialidadeMedico);
-                    clinica.adicionarMedico(medico);
-
-                    System.out.println("Medico adicionado com sucesso!");
+                    Medico medico = new Medico(nomeMedico, cpfMedico, especialidadeMedico);
+                    clinica.adicionarPessoa(medico);
+                    System.out.println("Médico adicionado com sucesso!");
                     break;
 
                 case 3:
-                    System.out.print("Digite o nome do paciente: ");
-                    String nomePacienteConsulta = scanner.nextLine();
-
-                    Paciente pacienteConsulta = clinica.buscarPacientePorNome(nomePacienteConsulta);
-                    if (pacienteConsulta == null) {
-                        System.out.println("Paciente nao encontrado.");
-                        break;
-                    }
-
-                    System.out.print("Digite o nome do medico: ");
-                    String nomeMedicoConsulta = scanner.nextLine();
-
-                    Medico medicoConsulta = clinica.buscarMedicoPorNome(nomeMedicoConsulta);
-                    if (medicoConsulta == null) {
-                        System.out.println("Medico nao encontrado.");
-                        break;
-                    }
-
-                    clinica.agendarConsulta(pacienteConsulta, medicoConsulta, new Date());
-                    break;
-
-                case 4:
-                    System.out.println("Relatório de Consultas:");
-                    for (Agendavel item : clinica.getConsultas()) {
-                        item.exibirInformacoes();  // Polimorfismo em ação
-                    }
+                    clinica.exibirInformacoesPessoas();
                     break;
 
                 case 0:
@@ -88,7 +58,7 @@ public class ClinicaMedica {
                     break;
 
                 default:
-                    System.out.println("Opcao invalida!");
+                    System.out.println("Opção inválida!");
                     break;
             }
         } while (opcao != 0);
