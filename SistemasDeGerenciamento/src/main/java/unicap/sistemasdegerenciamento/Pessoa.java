@@ -1,4 +1,4 @@
-package unicap.sistemasdegerenciamento.entidades;
+package unicap.sistemasdegerenciamento.ClinicaMedica;
 
 public class Pessoa {
     private String nome;
@@ -16,8 +16,7 @@ public class Pessoa {
     public String getCpf() {
         return cpf;
     }
-
-    @Override
+    
     public String toString() {
         return "Nome: " + nome + ", CPF: " + cpf;
     }
