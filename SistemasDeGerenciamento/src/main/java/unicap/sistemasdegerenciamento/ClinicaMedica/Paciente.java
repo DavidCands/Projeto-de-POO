@@ -6,7 +6,7 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
-public class Paciente extends Pessoa implements Agendavel {
+public class Paciente extends Pessoa {
     private int idade;
     private String email;
     private String telefone;
