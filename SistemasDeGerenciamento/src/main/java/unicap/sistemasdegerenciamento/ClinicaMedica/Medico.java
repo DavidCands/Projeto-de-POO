@@ -1,18 +1,13 @@
 package unicap.sistemasdegerenciamento.ClinicaMedica;
 
-public class Medico {
-    private String nome;
+public class Medico extends Pessoa {
     private String especialidade;
     private boolean disponivel;
     
-    public Medico(String nome, String especialidade) {
-        this.nome = nome;
+    public Medico(String nome, String cpf, String especialidade) {
+        super(nome, cpf);  
         this.especialidade = especialidade;
         this.disponivel = true;
-    }
-    
-    public String getNome() {
-        return nome;
     }
     
     public String getEspecialidade() {
