@@ -6,17 +6,14 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
-public class Paciente {
-    private String nome;
-    private String cpf;
+public class Paciente extends Pessoa {
     private int idade;
     private String email;
     private String telefone;
     private List<Consulta> consultas;
 
     public Paciente(String nome, String cpf, int idade, String email, String telefone) {
-        this.nome = nome;
-        this.cpf = cpf;
+        super(nome, cpf);  
         this.idade = idade;
         this.email = email;
         this.telefone = telefone;
@@ -29,9 +26,9 @@ public class Paciente {
 
     public void listarConsultas() {
         if (consultas.isEmpty()) {
-            System.out.println("Nenhuma consulta agendada para " + nome);
+            System.out.println("Nenhuma consulta agendada para " + getNome()); 
         } else {
-            System.out.println("Consultas de " + nome + ":");
+            System.out.println("Consultas de " + getNome() + ":");  
             for (Consulta consulta : consultas) {
                 System.out.println("Data: " + consulta.getData() + ", Médico: " + consulta.getMedico().getNome());
             }
@@ -62,15 +59,7 @@ public class Paciente {
             System.out.println("Consulta não encontrada na data especificada.");
         }
     }
-    
-    public String getNome() {
-        return nome;
-    }
 
-    public String getCpf() {
-        return cpf;
-    }
-    
     public int getIdade() {
         return idade;
     }
@@ -87,3 +76,4 @@ public class Paciente {
         return consultas;
     }
 }
+
