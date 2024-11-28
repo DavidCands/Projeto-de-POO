@@ -6,10 +6,10 @@ import java.util.Scanner;
 import unicap.sistemasdegerenciamento.ClinicaMedica.Clinica;
 
 public class Eventos {
-    public static void main(String[] args, Clinica clinica) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Clinica clinica = new Clinica(); 
         List<Evento> eventos = new ArrayList<>();
-
         int opcao;
 
         do {
@@ -24,25 +24,49 @@ public class Eventos {
 
             switch (opcao) {
                 case 1:
+                    System.out.println("Selecione o tipo de evento:");
+                    System.out.println("1. Seminário");
+                    System.out.println("2. Workshop");
+                    System.out.println("3. Conferência");
+                    int tipoEvento = scanner.nextInt();
+                    scanner.nextLine();
+
                     System.out.print("Digite o nome do evento: ");
                     String nomeEvento = scanner.nextLine();
                     System.out.print("Digite a data do evento (DD/MM/AAAA): ");
                     String dataEvento = scanner.nextLine();
                     System.out.print("Digite o nome do local: ");
                     String nomeLocal = scanner.nextLine();
-                    System.out.print("Digite o endereco do local: ");
+                    System.out.print("Digite o endereço do local: ");
                     String enderecoLocal = scanner.nextLine();
-                    System.out.print("Digite o numero de vagas disponiveis: ");
+                    System.out.print("Digite o número de vagas disponíveis: ");
                     int vagasEvento = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("Digite o preco do evento: R$");
+                    System.out.print("Digite o preço do evento: R$");
                     double precoEvento = scanner.nextDouble();
 
                     Local local = new Local(nomeLocal, enderecoLocal);
-                    Evento evento = new Evento(nomeEvento, dataEvento, local, vagasEvento, precoEvento);
-                    eventos.add(evento);
+                    Evento novoEvento = null;
 
-                    System.out.println("Evento cadastrado com sucesso!");
+                    switch (tipoEvento) {
+                        case 1:
+                            novoEvento = new Seminario(nomeEvento, dataEvento, local, vagasEvento, precoEvento);
+                            break;
+                        case 2:
+                            novoEvento = new Workshop(nomeEvento, dataEvento, local, vagasEvento, precoEvento);
+                            break;
+                        case 3:
+                            novoEvento = new Conferencia(nomeEvento, dataEvento, local, vagasEvento, precoEvento);
+                            break;
+                        default:
+                            System.out.println("Tipo de evento inválido.");
+                    }
+
+                    if (novoEvento != null) {
+                        eventos.add(novoEvento);
+                        System.out.println("Evento cadastrado com sucesso!");
+                        novoEvento.definirRegras();
+                    }
                     break;
 
                 case 2:
@@ -64,7 +88,7 @@ public class Eventos {
                         for (int i = 0; i < eventos.size(); i++) {
                             System.out.println((i + 1) + ". " + eventos.get(i).getNome());
                         }
-                        System.out.print("\nDigite o numero do evento que deseja gerenciar: ");
+                        System.out.print("\nDigite o número do evento que deseja gerenciar: ");
                         int indiceEvento = scanner.nextInt() - 1;
                         scanner.nextLine();
 
@@ -77,7 +101,7 @@ public class Eventos {
                                 System.out.println("1. Cadastrar participante");
                                 System.out.println("2. Remover participante");
                                 System.out.println("3. Consultar vagas");
-                                System.out.println("4. Gerar relatorio de participacao");
+                                System.out.println("4. Gerar relatório de participação");
                                 System.out.println("5. Exibir detalhes do evento");
                                 System.out.println("0. Voltar");
                                 System.out.print("Escolha uma opcao: ");
@@ -88,9 +112,9 @@ public class Eventos {
                                     case 1:
                                         System.out.print("Digite o nome do participante: ");
                                         String nomeParticipante = scanner.nextLine();
-                                        
+
                                         boolean isMedico = clinica.buscarMedicoPorNome(nomeParticipante) != null;
-                                        
+
                                         System.out.print("Digite o email do participante: ");
                                         String emailParticipante = scanner.nextLine();
                                         System.out.print("Digite o telefone do participante: ");
@@ -100,51 +124,53 @@ public class Eventos {
                                         scanner.nextLine();
 
                                         boolean isEstudante = false;
-                                        if(!isMedico){
-                                            System.out.print("O participante eh um estudante? (S/N): ");
+                                        if (!isMedico) {
+                                            System.out.print("O participante é um estudante? (S/N): ");
                                             isEstudante = scanner.nextLine().equalsIgnoreCase("S");
                                         }
-                                        
+
                                         double valorEvento = eventoGerenciar.getPrecoEvento();
-                                        
-                                        Participante participante = new Participante(nomeParticipante, emailParticipante, telefoneParticipante, idadeParticipante, isEstudante, isMedico, valorEvento);
-                                        
+
+                                        Participante participante = new Participante(
+                                                nomeParticipante, emailParticipante, telefoneParticipante,
+                                                idadeParticipante, isEstudante, isMedico, valorEvento);
+
                                         participante.calcularDesconto(valorEvento);
-                                        
+
                                         System.out.println("Valor do evento para " + nomeParticipante + ": R$" + participante.getPrecoPago());
 
                                         eventoGerenciar.cadastrarParticipante(participante);
                                         break;
-                                        
+
                                     case 2:
                                         System.out.print("Digite o nome do participante a ser removido: ");
                                         String nomeRemover = scanner.nextLine();
                                         eventoGerenciar.removerParticipante(nomeRemover);
                                         break;
-                                        
+
                                     case 3:
                                         eventoGerenciar.consultarVagas();
                                         break;
-                                        
+
                                     case 4:
                                         eventoGerenciar.gerarRelatorioParticipacao();
                                         break;
-                                        
+
                                     case 5:
                                         eventoGerenciar.exibirDetalhes();
                                         break;
-                                        
+
                                     case 0:
                                         System.out.println("Voltando ao menu principal...");
                                         break;
-                                        
+
                                     default:
-                                        System.out.println("Opcao invalida! Tente novamente.");
+                                        System.out.println("Opção inválida! Tente novamente.");
                                         break;
                                 }
                             } while (opcaoEvento != 0);
                         } else {
-                            System.out.println("Evento invalido.");
+                            System.out.println("Evento inválido.");
                         }
                     }
                     break;
@@ -154,9 +180,9 @@ public class Eventos {
                     break;
 
                 default:
-                    System.out.println("Opcao invalida! Tente novamente.");
+                    System.out.println("Opção inválida! Tente novamente.");
                     break;
             }
         } while (opcao != 0);
     }
-        }
+}
