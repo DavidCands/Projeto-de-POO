@@ -22,6 +22,10 @@ public class Mesa {
     public void ocuparMesa(Pessoa pessoa) {
         this.ocupada = true;
         System.out.println("Mesa " + numero + " ocupada por " + pessoa.getNome());
+
+        if (pessoa instanceof Medico) {
+            System.out.println(pessoa.getNome() + " é um médico.");
+        }
     }
 
     public void liberarMesa() {
