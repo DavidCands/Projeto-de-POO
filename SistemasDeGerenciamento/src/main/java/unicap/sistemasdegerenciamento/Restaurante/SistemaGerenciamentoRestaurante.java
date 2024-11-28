@@ -1,5 +1,4 @@
 package unicap.sistemasdegerenciamento.Restaurante;
-package unicap.sistemasdegerenciamento.Restaurante;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ public class SistemaGerenciamentoRestaurante {
         List<Mesa> mesas = new ArrayList<>();
         int cont = 1;
 
-        // Inicializando as mesas
         for (int i = 0; i < 5; i++) {
             Mesa mesa = new Mesa(cont);
             mesas.add(mesa);
@@ -39,7 +37,17 @@ public class SistemaGerenciamentoRestaurante {
             scanner.nextLine();
             System.out.print("Informe o seu nome: ");
             String nomeCliente = scanner.nextLine();
-            Pessoa cliente = new Cliente(nomeCliente, "12345678900");
+            System.out.print("Você é um médico? (1 - Sim | 2 - Não): ");
+            int opcMedico = scanner.nextInt();
+            Pessoa cliente;
+
+            if (opcMedico == 1) {
+                
+                cliente = new Medico(nomeCliente, "12345678900");
+            } else {
+                
+                cliente = new Cliente(nomeCliente, "12345678900");
+            }
 
             mesaEscolhida.ocuparMesa(cliente);
             Pedido pedido = mesaEscolhida.getPedido();
