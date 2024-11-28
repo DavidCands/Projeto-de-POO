@@ -16,10 +16,14 @@ public abstract class Pessoa {
     public String getCpf() {
         return cpf;
     }
-
-    public abstract void exibirInformacoes();
+    
+    public void exibirInformacoes() {
+        System.out.println("Nome: " + nome + ", CPF: " + cpf);
+    }
     
     public void exibirInformacoes(String tipo) {
         System.out.println("Nome: " + nome + ", CPF: " + cpf + ", Tipo: " + tipo);
     }
+
+    public abstract void exibirDetalhesAdicionais();
 }
