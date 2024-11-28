@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/f1f7bd06-5bf0-4ac2-a33b-d66eaed6ddca)# Projeto de POO
+# Projeto de POO
  Aplicação da Clínica Médica - Antônio Edson Alves de Holanda Neto <BR>
  Aplicação Sistema de Eventos - Danilo Teixeira de Carvalho <BR>
  Aplicação Restaurante - Eduardo José Rocha Alexandre e David Cândido de Souza <BR>
