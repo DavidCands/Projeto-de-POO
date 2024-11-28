@@ -7,12 +7,10 @@ public class ClienteRestaurante implements Pessoa {
         this.cpf = cpf;
     }
 
-    @Override
     public void exibirInformacoes() {
         System.out.println(nome + " | CPF: " + cpf);
     }
 
-    @Override
     public boolean isMedico() {
         return false;
     }
