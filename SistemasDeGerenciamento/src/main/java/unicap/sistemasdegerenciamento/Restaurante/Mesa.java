@@ -1,4 +1,5 @@
 package unicap.sistemasdegerenciamento.Restaurante;
+
 public class Mesa {
     private int numero;
     private boolean ocupada;
@@ -18,14 +19,14 @@ public class Mesa {
         return ocupada;
     }
 
-    public void ocupar(Pessoa cliente) {
+    public void ocuparMesa(Pessoa pessoa) {
         this.ocupada = true;
-        System.out.println(cliente.getClass().getSimpleName() + " ocupou a mesa " + numero);
+        System.out.println("Mesa " + numero + " ocupada por " + pessoa.getNome());
     }
 
-    public void liberar() {
+    public void liberarMesa() {
         this.ocupada = false;
-        System.out.println("Mesa " + numero + " foi liberada.");
+        System.out.println("Mesa " + numero + " liberada.");
     }
 
     public Pedido getPedido() {
