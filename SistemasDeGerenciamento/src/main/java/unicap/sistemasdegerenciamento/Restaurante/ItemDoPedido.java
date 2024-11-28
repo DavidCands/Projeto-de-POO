@@ -11,10 +11,6 @@ public class ItemDoPedido {
         this.preco = preco;
     }
 
-    public double calcularPrecoTotal(){
-        return quantidade * preco;
-    }
-    
     public String getNome() {
         return nome;
     }
@@ -27,7 +23,7 @@ public class ItemDoPedido {
         return preco;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void removerQuantidade(int quantidade) {
+        this.quantidade -= quantidade;
     }
 }
