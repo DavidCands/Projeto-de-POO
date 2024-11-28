@@ -42,7 +42,7 @@ public class Restaurante {
             String nomeCliente = scanner.nextLine();
             boolean isMedico = clinica.buscarMedicoPorNome(nomeCliente) != null;
             
-            mesaEscolhida.ocuparMesa(nomeCliente, isMedico);
+            GerenciadorDeMesa.ocuparMesa(mesaEscolhida, nomeCliente, isMedico);
             Pedido pedido = mesaEscolhida.getPedido();
 
             for(Mesa mesa : mesas){
@@ -105,7 +105,7 @@ public class Restaurante {
             opcConta = scanner.nextInt();
             if(opcConta == 1){
                 pedido.fecharPedido();
-                mesaEscolhida.liberarMesa();
+                GerenciadorDeMesa.liberarMesa(mesaEscolhida);
             }
             
             System.out.println("\nDeseja prosseguir [1- Sim | 2- Nao]? ");

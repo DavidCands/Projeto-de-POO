@@ -76,7 +76,7 @@ public class Pedido {
     }
 
     public void fecharPedido() {
-        calcularDesconto();
+        this.total = CalculadoraDeDesconto.aplicarDesconto(this.total, this.isMedico);
         this.fechado = true;
         System.out.println("\n>> Conta Fechada <<");
         System.out.println("Conta Final:");
@@ -106,15 +106,6 @@ public class Pedido {
             System.out.println("Conta fechada");
         } else {
             System.out.println("Conta aberta");
-        }
-    }
-
-    public void calcularDesconto() {
-        if (isMedico) {
-            System.out.println("Desconto para o Medico aplicado!");
-            this.total *= 0.80; 
-        } else {
-            System.out.println("Nenhum desconto aplicado.");
         }
     }
 

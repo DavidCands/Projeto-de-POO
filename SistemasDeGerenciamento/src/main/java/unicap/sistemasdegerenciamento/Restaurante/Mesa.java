@@ -9,25 +9,6 @@ public class Mesa {
         this.numero = numero;
         this.ocupada = false;
     }
-    
-    private int gerarIdDoPedido(){
-        return (int)(Math.random() * 1000);
-    }
-    
-    public void ocuparMesa(String nomeCliente, boolean isMedico){
-        if(ocupada == false){
-            ocupada = true;
-            this.pedido = new Pedido(gerarIdDoPedido(), this, nomeCliente, isMedico);
-        }
-        else{
-            System.out.println("A mesa esta ocupada!");
-        }
-    }
-    
-    public void liberarMesa(){
-        ocupada = false;
-        pedido = null;
-    }
 
     public int getNumero(){
         return this.numero;
@@ -36,8 +17,16 @@ public class Mesa {
     public Pedido getPedido(){
         return this.pedido;
     }
+    
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
 
     public boolean isOcupada(){
         return this.ocupada;
+    }
+    
+    public void setOcupada(boolean ocupada) {
+        this.ocupada = ocupada;
     }
 }
