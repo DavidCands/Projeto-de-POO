@@ -1,17 +1,25 @@
-public class ClienteRestaurante implements Pessoa {
-    private String nome;
-    private String cpf;
+package unicap.sistemasdegerenciamento.Restaurante;
 
-    public ClienteRestaurante(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
+public class Cliente extends Pessoa {
+    public Cliente(String nome, String cpf) {
+        super(nome, cpf);
     }
+
 
     public void exibirInformacoes() {
-        System.out.println(nome + " | CPF: " + cpf);
+        System.out.println("Cliente: " + getNome() + ", CPF: " + getCpf());
+    }
+}
+
+package unicap.sistemasdegerenciamento.Restaurante;
+
+public class Medico extends Pessoa {
+    public Medico(String nome, String cpf) {
+        super(nome, cpf);
     }
 
-    public boolean isMedico() {
-        return false;
+
+    public void exibirInformacoes() {
+        System.out.println("Médico: " + getNome() + ", CPF: " + getCpf());
     }
 }
