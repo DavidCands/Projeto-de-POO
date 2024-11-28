@@ -16,10 +16,15 @@ public abstract class Pessoa {
     public String getCpf() {
         return cpf;
     }
-    
+
     public void exibirInformacoes() {
         System.out.println("Nome: " + nome);
         System.out.println("CPF: " + cpf);
     }
+
     public abstract void exibirInformacoesEspecificas();
+
+    public boolean isMedico() {
+        return false; 
+    }
 }
