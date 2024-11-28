@@ -5,22 +5,13 @@ public class Medico extends Pessoa {
     private boolean disponivel;
 
     public Medico(String nome, String cpf, String especialidade) {
-        super(nome, cpf); 
+        super(nome, cpf);
         this.especialidade = especialidade;
         this.disponivel = true;
     }
 
-    @Override
-    public void exibirInformacoes() {
-        System.out.println("Médico: " + getNome() + ", CPF: " + getCpf() + ", Especialidade: " + especialidade + ", Disponível: " + disponivel);
-    }
-
-    public void atenderConsulta(Consulta consulta) {
-        System.out.println("Atendendo consulta de " + consulta.getPaciente().getNome());
-    }
-
-    public void atualizarDisponibilidade(boolean disponibilidade) {
-        this.disponivel = disponibilidade;
+    public String getEspecialidade() {
+        return especialidade;
     }
 
     public boolean isDisponivel() {
@@ -31,7 +22,26 @@ public class Medico extends Pessoa {
         this.disponivel = disponivel;
     }
 
-    public String getEspecialidade() {
-        return especialidade;
+    public void exibirInformacoes() {
+        System.out.println("Médico: " + getNome());
+        System.out.println("Especialidade: " + especialidade);
+        System.out.println("Disponível: " + (disponivel ? "Sim" : "Não"));
+    }
+
+    public void exibirInformacoes(boolean mostrarCPF) {
+        exibirInformacoes();
+        if (mostrarCPF) {
+            System.out.println("CPF: " + getCpf());
+        }
+    }
+
+    public void setDisponivel(boolean disponivel, String mensagem) {
+        this.disponivel = disponivel;
+        System.out.println(mensagem);
+    }
+
+    public void setDisponivel(boolean disponivel, String mensagem, String motivo) {
+        this.disponivel = disponivel;
+        System.out.println(mensagem + " Motivo: " + motivo);
     }
 }
