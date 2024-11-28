@@ -70,6 +70,7 @@ public class Eventos {
 
                         if (indiceEvento >= 0 && indiceEvento < eventos.size()) {
                             Evento eventoGerenciar = eventos.get(indiceEvento);
+
                             int opcaoEvento;
                             do {
                                 System.out.println("\n--- Gerenciar Evento: " + eventoGerenciar.getNome() + " ---");
@@ -107,6 +108,8 @@ public class Eventos {
                                         double valorEvento = eventoGerenciar.getPrecoEvento();
                                         
                                         Participante participante = new Participante(nomeParticipante, emailParticipante, telefoneParticipante, idadeParticipante, isEstudante, isMedico, valorEvento);
+                                        
+                                        participante.calcularDesconto(valorEvento);
                                         
                                         System.out.println("Valor do evento para " + nomeParticipante + ": R$" + participante.getPrecoPago());
 
@@ -156,4 +159,4 @@ public class Eventos {
             }
         } while (opcao != 0);
     }
-}
+        }
