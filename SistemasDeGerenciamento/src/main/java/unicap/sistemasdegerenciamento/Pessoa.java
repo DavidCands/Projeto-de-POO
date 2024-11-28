@@ -1,4 +1,4 @@
-package unicap.sistemasdegerenciamento.ClinicaMedica;
+package unicap.sistemasdegerenciamento;
 
 public abstract class Pessoa {
     private String nome;
@@ -17,5 +17,9 @@ public abstract class Pessoa {
         return cpf;
     }
     
-    public abstract void exibirInformacoes();
+    public void exibirInformacoes() {
+        System.out.println("Nome: " + nome);
+        System.out.println("CPF: " + cpf);
+    }
+    public abstract void exibirInformacoesEspecificas();
 }
