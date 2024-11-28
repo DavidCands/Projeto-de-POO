@@ -1,4 +1,4 @@
-# Projeto de POO
+![image](https://github.com/user-attachments/assets/f1f7bd06-5bf0-4ac2-a33b-d66eaed6ddca)# Projeto de POO
  Aplicação da Clínica Médica - Antônio Edson Alves de Holanda Neto <BR>
  Aplicação Sistema de Eventos - Danilo Teixeira de Carvalho <BR>
  Aplicação Restaurante - Eduardo José Rocha Alexandre e David Cândido de Souza <BR>
@@ -54,4 +54,6 @@ O sistema pode registrar os cancelamentos de pedidos e fornecer um relatório co
 
 # Projeto PT 2
 Desenvolvimento da documentação UML (Diagramas de classes e fluxogramas) por meio da ferramenta on-line, Draw.io
+![Documentação UML drawio (2)](https://github.com/user-attachments/assets/5c064b9f-5a03-47f5-a949-c7851b26df8b)
+
 
