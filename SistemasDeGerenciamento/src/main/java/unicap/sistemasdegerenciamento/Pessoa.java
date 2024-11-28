@@ -1,4 +1,4 @@
-package unicap.sistemasdegerenciamento;
+package unicap.sistemasdegerenciamento.Restaurante;
 
 public abstract class Pessoa {
     private String nome;
@@ -17,14 +17,9 @@ public abstract class Pessoa {
         return cpf;
     }
 
-    public void exibirInformacoes() {
-        System.out.println("Nome: " + nome);
-        System.out.println("CPF: " + cpf);
-    }
-
-    public abstract void exibirInformacoesEspecificas();
-
-    public boolean isMedico() {
-        return false; 
+    public abstract void exibirInformacoes();
+    
+    public void exibirInformacoes(String tipo) {
+        System.out.println("Nome: " + nome + ", CPF: " + cpf + ", Tipo: " + tipo);
     }
 }
