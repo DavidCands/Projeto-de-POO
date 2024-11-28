@@ -65,7 +65,7 @@ public class Restaurante {
                 }while(opcMais == 1);
                 
                 System.out.println("\nRelatorio de Pedido da Mesa " +mesaEscolhida.getNumero()+ ": ");
-                pedido.gerarRelatorio();
+                GeradorDeRelatorio.gerarRelatorio(pedido);
 
                 System.out.println("\nVoce deseja remover algum item do seu pedido[1- Sim | 2- Nao]? ");
                 opcRemoverItem = scanner.nextInt();
@@ -82,7 +82,7 @@ public class Restaurante {
                     
                         pedido.removerItem(nomeItemRemover, quantItemRemover);
                         System.out.println("\nRelatorio atualizado de Pedido da Mesa " +mesaEscolhida.getNumero()+ ": ");
-                        pedido.gerarRelatorio();
+                        GeradorDeRelatorio.gerarRelatorio(pedido);
                         
                         System.out.println("\nDeseja remover mais algum item do seu pedido[1- Sim | 2- Nao]? ");
                         opcRemoverItem2 = scanner.nextInt();

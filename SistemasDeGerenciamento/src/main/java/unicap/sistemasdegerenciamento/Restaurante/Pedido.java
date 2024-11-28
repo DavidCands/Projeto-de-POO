@@ -80,33 +80,11 @@ public class Pedido {
         this.fechado = true;
         System.out.println("\n>> Conta Fechada <<");
         System.out.println("Conta Final:");
-        this.gerarRelatorio();
+        GeradorDeRelatorio.gerarRelatorio(this);
     }
 
     public void reabrirPedido() {
         this.fechado = false;
-    }
-
-    public void gerarRelatorio() {
-        System.out.println("Pedido ID: " + this.getId());
-        System.out.println("Mesa: " + this.mesa.getNumero());
-        System.out.println("------------------");
-        System.out.println("Pedido do Cliente ");
-
-        for (ItemDoPedido item : this.itens) {
-            System.out.println(">> " + item.getNome() + " <<");
-            System.out.println("+ Quantidade: " + item.getQuantidade());
-            System.out.println("+ Preco Unitario: R$" + item.getPreco());
-            System.out.println("+ Preco Total: R$" + item.calcularPrecoTotal());
-        }
-
-        System.out.println("# Total a pagar: R$" + this.total);
-
-        if (this.fechado) {
-            System.out.println("Conta fechada");
-        } else {
-            System.out.println("Conta aberta");
-        }
     }
 
     public Pedido buscarPedidoPorId(int id) {
@@ -145,5 +123,70 @@ public class Pedido {
 
     public boolean isFechado() {
         return fechado;
+    }
+}
+
+class GerenciadorDeMesa {
+    public static void ocuparMesa(Mesa mesa, String nomeCliente, boolean isMedico) {
+        if (!mesa.isOcupada()) {
+            mesa.setOcupada(true);
+            mesa.setPedido(new Pedido(gerarIdDoPedido(), mesa, nomeCliente, isMedico));
+            System.out.println("Mesa " + mesa.getNumero() + " ocupada pelo cliente: " + nomeCliente);
+        }
+        else {
+            System.out.println("A mesa ja esta ocupada!");
+        }
+    }
+    
+    public static void liberarMesa(Mesa mesa) {
+        if (mesa.isOcupada()) {
+            mesa.setOcupada(false);
+            mesa.setPedido(null);
+            System.out.println("Mesa " + mesa.getNumero() + " liberada.");
+        } 
+        else {
+            System.out.println("A mesa ja esta vazia!");
+        }
+    }
+    
+    private static int contadorDeIds = 1;
+    
+    private static int gerarIdDoPedido() {
+        return contadorDeIds++;
+    }
+}
+
+class CalculadoraDeDesconto {
+    public static double aplicarDesconto(double total, boolean isMedico){
+        if (isMedico) {
+            System.out.println("Desconto para o Médico aplicado!");
+            return total * 0.80;
+        }
+        System.out.println("Nenhum desconto aplicado.");
+        return total;
+    }
+}
+
+class GeradorDeRelatorio {
+    public static void gerarRelatorio(Pedido pedido) {
+        System.out.println("Pedido ID: " + pedido.getId());
+        System.out.println("Mesa: " + pedido.getMesa().getNumero());
+        System.out.println("------------------");
+        System.out.println("Pedido do Cliente: ");
+
+        for (ItemDoPedido item : pedido.getItens()) {
+            System.out.println(">> " + item.getNome() + " <<");
+            System.out.println("+ Quantidade: " + item.getQuantidade());
+            System.out.println("+ Preco Unitario: R$" + item.getPreco());
+            System.out.println("+ Preco Total: R$" + item.calcularPrecoTotal());
+        }
+
+        System.out.println("# Total a pagar: R$" + pedido.getTotal());
+
+        if (pedido.isFechado()) {
+            System.out.println("Conta fechada");
+        } else {
+            System.out.println("Conta aberta");
+        }
     }
 }
