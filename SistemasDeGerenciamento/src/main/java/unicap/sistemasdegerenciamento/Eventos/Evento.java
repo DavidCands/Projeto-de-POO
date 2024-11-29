@@ -3,7 +3,7 @@ package unicap.sistemasdegerenciamento.Eventos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Evento {
+public abstract class Evento {
     private String nome;
     private String data;
     private Local local;
@@ -64,6 +64,8 @@ public class Evento {
         System.out.println("Vagas disponiveis: " + vagasDisponiveis);
         System.out.println("----------------------------");
     }
+    
+    public abstract void definirRegras();
 
     public String getNome() {
         return nome;
@@ -88,38 +90,4 @@ public class Evento {
     public void setPrecoEvento(double precoEvento) {
         this.precoEvento = precoEvento;
     }
-
-    public class Seminario extends Evento {
-        public Seminario(String nome, String data, Local local, int vagasDisponiveis, double precoEvento) {
-            super(nome, data, local, vagasDisponiveis, precoEvento);
-        }
-
-        public void definirRegras() {
-            System.out.println("Seminários permitem até 100 participantes e têm um desconto de 10% para grupos.");
-        }
-    }
-
-    public class Workshop extends Evento {
-        public Workshop(String nome, String data, Local local, int vagasDisponiveis, double precoEvento) {
-            super(nome, data, local, vagasDisponiveis, precoEvento);
-        }
-
-        public void definirRegras() {
-            System.out.println("Workshops têm um limite de 50 participantes e incluem material didático.");
-        }
-    }
-
-    public class Conferencia extends Evento {
-        public Conferencia(String nome, String data, Local local, int vagasDisponiveis, double precoEvento) {
-            super(nome, data, local, vagasDisponiveis, precoEvento);
-        }
-
-        public void definirRegras() {
-            System.out.println("Conferências podem ter até 500 participantes e incluem coffee breaks.");
-        }
-    }
-}
-
-public void setPrecoEvento(double precoEvento) {
-    this.precoEvento = precoEvento;
 }

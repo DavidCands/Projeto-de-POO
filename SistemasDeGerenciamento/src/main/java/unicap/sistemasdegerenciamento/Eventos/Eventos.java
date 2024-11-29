@@ -6,9 +6,9 @@ import java.util.Scanner;
 import unicap.sistemasdegerenciamento.ClinicaMedica.Clinica;
 
 public class Eventos {
-    public static void main(String[] args) {
+    public static void main(String[] args, Clinica clinica) {
         Scanner scanner = new Scanner(System.in);
-        Clinica clinica = new Clinica(); 
+        //Clinica clinica = new Clinica();
         List<Evento> eventos = new ArrayList<>();
         int opcao;
 

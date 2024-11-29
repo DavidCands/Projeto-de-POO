@@ -59,7 +59,7 @@ public class GerenciamentoUnificado {
         System.out.println("Gerenciando Clinica...");
         ClinicaMedica.main(new String[0], clinica);
     }
-    
+}   
     /*private static void aplicarDescontoMedico(Clinica clinica) {
         Scanner scanner = new Scanner(System.in);
         
@@ -99,4 +99,3 @@ public class GerenciamentoUnificado {
             System.out.println("Medico nao encontrado na clinica.");
         }
     }*/
-}
