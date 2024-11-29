@@ -1,6 +1,6 @@
 # Projeto de POO
  Aplicação da Clínica Médica - Antônio Edson Alves de Holanda Neto <BR>
- Aplicação Sistema de Eventos - Danilo Teixeira de Carvalho <BR>
+ Aplicação Sistema de Eventos - Danilo Teixeira de Carvalho e Lucas Mourato Aureliano de Melo <BR>
  Aplicação Restaurante - Eduardo José Rocha Alexandre e David Cândido de Souza <BR>
 
 ## Perguntas - Clínica
