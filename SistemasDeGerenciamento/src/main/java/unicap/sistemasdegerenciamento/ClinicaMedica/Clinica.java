@@ -3,16 +3,19 @@ package unicap.sistemasdegerenciamento.ClinicaMedica;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import unicap.sistemasdegerenciamento.Pessoa;
 
 public class Clinica {
     private List<Paciente> pacientes;
     private List<Medico> medicos;
     private List<Consulta> consultas;
+    private List<Pessoa> pessoas;
 
     public Clinica() {
         pacientes = new ArrayList<>();
         medicos = new ArrayList<>();
         consultas = new ArrayList<>();
+        pessoas = new ArrayList<>();
     }
 
     public void adicionarPaciente(Paciente paciente) {
@@ -21,6 +24,17 @@ public class Clinica {
 
     public void adicionarMedico(Medico medico) {
         medicos.add(medico);
+    }
+    
+    public void adicionarPessoa(Pessoa pessoa) {
+        pessoas.add(pessoa);
+    }
+    
+    public void exibirInformacoesPessoas() {
+        for (Pessoa pessoa : pessoas) {
+            pessoa.exibirInformacoes();
+            pessoa.exibirDetalhesAdicionais();
+        }
     }
 
     public Medico buscarMedicoPorNome(String nome) {

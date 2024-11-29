@@ -1,4 +1,4 @@
-package unicap.sistemasdegerenciamento.Restaurante;
+package unicap.sistemasdegerenciamento;
 
 public abstract class Pessoa {
     private String nome;

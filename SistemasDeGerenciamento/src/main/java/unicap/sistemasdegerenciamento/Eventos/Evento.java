@@ -88,6 +88,7 @@ public class Evento {
     public void setPrecoEvento(double precoEvento) {
         this.precoEvento = precoEvento;
     }
+
     public class Seminario extends Evento {
         public Seminario(String nome, String data, Local local, int vagasDisponiveis, double precoEvento) {
             super(nome, data, local, vagasDisponiveis, precoEvento);
@@ -97,6 +98,7 @@ public class Evento {
             System.out.println("Seminários permitem até 100 participantes e têm um desconto de 10% para grupos.");
         }
     }
+
     public class Workshop extends Evento {
         public Workshop(String nome, String data, Local local, int vagasDisponiveis, double precoEvento) {
             super(nome, data, local, vagasDisponiveis, precoEvento);
@@ -106,6 +108,7 @@ public class Evento {
             System.out.println("Workshops têm um limite de 50 participantes e incluem material didático.");
         }
     }
+
     public class Conferencia extends Evento {
         public Conferencia(String nome, String data, Local local, int vagasDisponiveis, double precoEvento) {
             super(nome, data, local, vagasDisponiveis, precoEvento);
@@ -117,7 +120,6 @@ public class Evento {
     }
 }
 
-    public void setPrecoEvento(double precoEvento) {
-        this.precoEvento = precoEvento;
-    }
-    }
+public void setPrecoEvento(double precoEvento) {
+    this.precoEvento = precoEvento;
+}

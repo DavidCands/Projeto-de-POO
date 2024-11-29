@@ -1,5 +1,7 @@
 package unicap.sistemasdegerenciamento.ClinicaMedica;
 
+import unicap.sistemasdegerenciamento.Pessoa;
+
 public class Medico extends Pessoa {
     private String especialidade;
     private boolean disponivel;
@@ -43,5 +45,11 @@ public class Medico extends Pessoa {
     public void setDisponivel(boolean disponivel, String mensagem, String motivo) {
         this.disponivel = disponivel;
         System.out.println(mensagem + " Motivo: " + motivo);
+    }
+    
+    @Override
+    public void exibirDetalhesAdicionais() {
+        System.out.println("Especialidade: " + especialidade);
+        System.out.println("Disponível: " + (disponivel ? "Sim" : "Nao"));
     }
 }

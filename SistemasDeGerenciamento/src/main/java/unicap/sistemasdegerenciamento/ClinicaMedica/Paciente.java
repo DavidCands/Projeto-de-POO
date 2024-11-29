@@ -3,6 +3,7 @@ package unicap.sistemasdegerenciamento.ClinicaMedica;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import unicap.sistemasdegerenciamento.Pessoa;
 
 public class Paciente extends Pessoa {
     private int idade;
@@ -51,5 +52,12 @@ public class Paciente extends Pessoa {
 
     public List<Consulta> getConsultas() {
         return consultas;
+    }
+    
+    @Override
+    public void exibirDetalhesAdicionais() {
+        System.out.println("Idade: " + idade);
+        System.out.println("Email: " + email);
+        System.out.println("Telefone: " + telefone);
     }
 }
