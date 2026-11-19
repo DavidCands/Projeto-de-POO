@@ -1,59 +1,182 @@
-# Projeto de POO
- Aplicação da Clínica Médica - Antônio Edson Alves de Holanda Neto <BR>
- Aplicação Sistema de Eventos - Danilo Teixeira de Carvalho e Lucas Mourato Aureliano de Melo <BR>
- Aplicação Restaurante - Eduardo José Rocha Alexandre e David Cândido de Souza <BR>
+# 🖥️ Sistema de Gerenciamento Unificado — Java
 
-## Perguntas - Clínica
-Como posso adicionar um novo paciente ao sistema? <BR>
-Você pode utilizar a funcionalidade de adicionar paciente, inserindo o nome e o CPF do paciente. Isso será feito selecionando a opção 1 no menu principal.<BR>
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![OOP](https://img.shields.io/badge/POO-Programação_Orientada_a_Objetos-blue?style=for-the-badge)
+![GitHub](https://img.shields.io/badge/GitHub-Versionamento-181717?style=for-the-badge&logo=github&logoColor=white)
 
-É possível adicionar um médico com uma especialidade específica? <BR>
-Sim. Através da opção 2 do menu, você pode inserir o nome do médico e a especialidade desejada. <BR>
+## 📌 Sobre o Projeto
 
-Como agendar uma consulta entre um paciente e um médico? <BR>
-Ao escolher a opção 3, você pode agendar uma consulta, fornecendo o nome do paciente e do médico. O sistema verificará se o médico está disponível. <BR>
+O **Sistema de Gerenciamento Unificado** é um projeto acadêmico desenvolvido em Java durante a disciplina de Programação Orientada a Objetos (POO), do curso de Ciência da Computação.
 
-Posso verificar todas as consultas agendadas até o momento? <BR>
-Sim. A opção 4 no menu exibe um relatório com todas as consultas já agendadas, incluindo o nome do paciente, o nome do médico, e a data. <BR>
+O objetivo é aplicar conceitos de programação orientada a objetos por meio do desenvolvimento de três sistemas integrados:
 
-O que acontece se eu tentar agendar uma consulta com um médico que não está disponível? <BR>
-O sistema informará que o médico não está disponível ; <BR>
+- 🏥 **Clínica Médica:** gerenciamento de pacientes, médicos e consultas.
+- 🎫 **Sistema de Eventos:** gerenciamento de eventos, inscrições e participantes.
+- 🍽️ **Restaurante:** gerenciamento de mesas, pedidos, itens do cardápio e relatórios de vendas.
 
-## Perguntas - Sistema de eventos
-Quantos participantes estão inscritos em um evento específico? <BR>
-O sistema pode contar o número de participantes cadastrados em um evento específico, consultando a lista de participantes desse evento. <BR>
+O projeto permite explorar a organização do código em classes e objetos, além de conceitos como encapsulamento, herança e reutilização de código.
 
-Há vagas disponíveis para novos participantes em um determinado evento?<BR>
-O sistema pode verificar e retornar o número de vagas restantes para novos participantes em um evento;<BR>
+---
 
-Quais são os eventos agendados em uma data específica?<BR>
-O sistema pode listar todos os eventos que estão programados para uma data específica, comparando a data informada com a data de cada evento.<BR>
+## 🛠️ Tecnologias e Ferramentas
 
-Quem são os participantes inscritos em um evento e quais suas informações (como idade e e-mail)?<BR>
-O sistema pode gerar um relatório com a lista completa dos participantes inscritos em um evento, incluindo detalhes como nome, idade e e-mail.<BR>
+- **Java:** linguagem principal de desenvolvimento.
+- **Programação Orientada a Objetos:** paradigma utilizado na construção dos módulos.
+- **UML:** modelagem e documentação da estrutura do sistema.
+- **Draw.io (diagrams.net):** elaboração de diagramas e fluxogramas.
+- **Git e GitHub:** versionamento e colaboração no projeto.
 
-Qual é a lotação máxima e quantos participantes estão presentes em cada evento?<BR>
-O sistema pode fornecer um resumo com a capacidade total (vagas iniciais) de cada evento e o número atual de participantes cadastrados, permitindo verificar a ocupação de cada evento.<BR>
+---
 
-## Perguntas - Restaurante
+## ⚙️ Módulos do Sistema
 
-Qual é o item mais pedido pelos clientes? <BR>
-O sistema pode calcular e exibir o item do cardápio com o maior número de pedidos acumulados.<BR>
+### 🏥 1. Clínica Médica
 
-Qual é o valor total das contas de uma mesa específica?<BR>
-O sistema pode gerar um relatório detalhado do pedido de uma mesa e calcular o valor total a ser pago, incluindo todos os itens pedidos.<BR>
+Módulo desenvolvido para auxiliar no gerenciamento de informações relacionadas a pacientes, médicos e consultas.
 
-Quantas mesas estão ocupadas e quantas estão disponíveis no restaurante?<BR>
-O sistema pode contar e exibir o número de mesas ocupadas e livres no restaurante em um dado momento.<BR>
+**Funcionalidades documentadas:**
+- Cadastro de pacientes.
+- Cadastro e identificação de médicos por especialidade.
+- Agendamento de consultas.
+- Verificação da disponibilidade de médicos.
+- Consulta às informações dos agendamentos.
 
-Quantos itens de determinado tipo foram pedidos em um dia?<BR>
-O sistema pode registrar os pedidos diários e fornecer um resumo do número total de itens de um tipo específico (como "Pizzas" ou "Refrigerantes") solicitados em um determinado período.<BR>
+### 🎫 2. Sistema de Eventos
 
-Quantos pedidos foram cancelados em um dia específico? <BR>
-O sistema pode registrar os cancelamentos de pedidos e fornecer um relatório com o número total de pedidos cancelados em um dia ou período específico.<BR>
+Módulo voltado à organização de eventos e ao gerenciamento de participantes.
 
-# Projeto PT 2
-Desenvolvimento da documentação UML (Diagramas de classes e fluxogramas) por meio da ferramenta on-line, Draw.io
-![Documentação UML drawio (2)](https://github.com/user-attachments/assets/5c064b9f-5a03-47f5-a949-c7851b26df8b)
+**Funcionalidades documentadas:**
+- Cadastro e consulta de eventos.
+- Inscrição de participantes.
+- Verificação da disponibilidade de vagas.
+- Consulta de informações dos participantes.
+- Controle da capacidade dos eventos.
 
+### 🍽️ 3. Restaurante
 
+Módulo desenvolvido para auxiliar no gerenciamento das operações de um restaurante.
+
+**Funcionalidades documentadas:**
+- Gerenciamento de mesas disponíveis e ocupadas.
+- Registro de pedidos.
+- Gerenciamento dos itens do cardápio.
+- Cálculo do valor total dos pedidos.
+- Geração de relatórios de vendas.
+
+---
+
+## ❓ Perguntas Frequentes
+
+Esta seção reúne as perguntas e respostas documentadas durante o desenvolvimento do projeto. Algumas operações de relatórios e consultas devem ser conferidas no código para verificar se estão implementadas na versão publicada.
+
+### 🏥 Clínica Médica
+
+**1. Como posso adicionar um novo paciente ao sistema?**
+
+Utilizando a funcionalidade de cadastro de pacientes, é possível inserir as informações solicitadas, como nome e CPF.
+
+**2. É possível adicionar um médico com uma especialidade específica?**
+
+O sistema contempla informações sobre médicos e suas especialidades. O cadastro é descrito na documentação original do módulo.
+
+**3. Como agendar uma consulta entre um paciente e um médico?**
+
+Através da funcionalidade de agendamento, informando os dados necessários para identificar o paciente e o médico. O sistema considera a disponibilidade do profissional.
+
+**4. Posso verificar todas as consultas agendadas?**
+
+A documentação prevê a consulta aos agendamentos, com informações como paciente, médico e data.
+
+**5. O que acontece se eu tentar agendar uma consulta com um médico indisponível?**
+
+O sistema deve informar que o médico não está disponível para o agendamento.
+
+### 🎫 Sistema de Eventos
+
+**1. Quantos participantes estão inscritos em um evento específico?**
+
+A quantidade pode ser obtida consultando os participantes cadastrados no evento.
+
+**2. Há vagas disponíveis para novos participantes?**
+
+A disponibilidade pode ser verificada comparando a capacidade do evento com a quantidade de participantes inscritos.
+
+**3. Quais são os eventos agendados em uma data específica?**
+
+A documentação prevê a consulta aos eventos programados, considerando suas respectivas datas.
+
+**4. Quem são os participantes inscritos em um evento?**
+
+A consulta aos participantes pode apresentar informações como nome, idade e e-mail.
+
+**5. Qual é a lotação máxima e quantos participantes estão cadastrados?**
+
+O sistema pode fornecer informações sobre a capacidade total do evento e a quantidade de inscrições realizadas.
+
+### 🍽️ Restaurante
+
+**1. Qual é o item mais pedido pelos clientes?**
+
+A documentação prevê a identificação do item mais solicitado a partir da contagem dos pedidos realizados.
+
+**2. Qual é o valor total da conta de uma mesa específica?**
+
+O valor pode ser calculado considerando os itens registrados no pedido e seus respectivos preços e quantidades.
+
+**3. Quantas mesas estão ocupadas e quantas estão disponíveis?**
+
+O gerenciamento de mesas permite acompanhar o estado de ocupação do restaurante.
+
+**4. Quantos itens de determinado tipo foram pedidos em um dia?**
+
+A documentação original descreve a possibilidade de consultar os itens registrados em determinado período.
+
+**5. Quantos pedidos foram cancelados em um dia específico?**
+
+A documentação original também prevê o registro e a consulta de cancelamentos por período.
+
+---
+
+## 📐 Modelagem UML — Parte II
+
+Na segunda etapa do projeto, foi desenvolvida a documentação UML, utilizando a ferramenta **Draw.io (diagrams.net)**.
+
+A modelagem foi utilizada para representar visualmente a organização e as relações entre os componentes do sistema, auxiliando no entendimento de sua estrutura.
+
+### Diagrama UML
+
+![Documentação UML do Sistema de Gerenciamento Unificado](https://github.com/user-attachments/assets/5c064b9f-5a03-47f5-a949-c7851b26df8b)
+
+---
+
+## 🚀 Como Executar o Projeto
+
+Para obter o código-fonte, clone o repositório:
+
+```bash
+git clone https://github.com/DavidCands/Projeto-de-POO.git
+```
+
+Em seguida, abra o projeto em uma IDE com suporte a Java, configure o JDK compatível com o projeto e execute sua classe principal.
+
+> **Observação:** As instruções específicas de compilação e a classe de inicialização devem ser identificadas na estrutura atual do código.
+
+---
+
+## 👥 Equipe de Desenvolvimento
+
+O projeto foi desenvolvido em equipe, com a seguinte divisão de responsabilidades:
+
+| Módulo | Desenvolvedores |
+|---|---|
+| 🏥 Clínica Médica | Antônio Edson Alves de Holanda Neto |
+| 🎫 Sistema de Eventos | Danilo Teixeira de Carvalho e Lucas Mourato Aureliano de Melo |
+| 🍽️ Restaurante | Eduardo José Rocha Alexandre e David Cândido de Souza |
+
+---
+
+## 🎓 Contexto Acadêmico
+
+Projeto desenvolvido como atividade acadêmica da disciplina de **Programação Orientada a Objetos**, no curso de Ciência da Computação da Universidade Católica de Pernambuco (UNICAP).
+
+O desenvolvimento proporcionou a aplicação prática de conceitos fundamentais de orientação a objetos, organização de classes, colaboração em equipe e documentação de software.
